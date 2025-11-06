@@ -7,9 +7,8 @@ namespace Aemulus_XR_Reporting_App
 	{
 		private BackgroundWorker _backgroundWorker;
 		private int maxProgress;
-		private int progressValue = 0;
 
-		public event Action OnLoadingComplete;
+		public event Action? OnLoadingComplete;
 
 		public loadingUserControl()
 		{
@@ -26,11 +25,10 @@ namespace Aemulus_XR_Reporting_App
 
 		public void resetProgressBar()
 		{
-			progressValue = 0;
 			_backgroundWorker.RunWorkerAsync();
 		}
 
-		private void BackgroundWorker_DoWork(object sender, DoWorkEventArgs e)
+		private void BackgroundWorker_DoWork(object? sender, DoWorkEventArgs e)
 		{
 			for (int i = 0; i <= maxProgress; i++)
 			{
@@ -43,9 +41,9 @@ namespace Aemulus_XR_Reporting_App
 			}
 		}
 
-		private void BackgroundWorker_ProgressChanged(object sender, ProgressChangedEventArgs e) => progressBar.Value = e.ProgressPercentage;
+		private void BackgroundWorker_ProgressChanged(object? sender, ProgressChangedEventArgs e) => progressBar.Value = e.ProgressPercentage;
 
-		private void BackgroundWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e) => onLoadingComplete();
+		private void BackgroundWorker_RunWorkerCompleted(object? sender, RunWorkerCompletedEventArgs e) => onLoadingComplete();
 
 		private void onLoadingComplete()
 		{
