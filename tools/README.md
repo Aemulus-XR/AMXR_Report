@@ -65,7 +65,7 @@ PowerShell script that builds the application and creates the MSI installer with
 6. Opens the output folder
 
 **Output:**
-- Location: `output\AemulusXRReporting.msi`
+- Location: `src\output\AemulusXRReporting.msi`
 - Build logs: Console output
 - Build artifacts: `src\bin\Release\`
 
@@ -85,7 +85,7 @@ PowerShell script that builds the application and creates the MSI installer with
    ```powershell
    [guid]::NewGuid()
    ```
-   Update `installer\AemulusXRReporting.wxs` line 11 with the generated GUID
+   Update `src\installer\AemulusXRReporting.wxs` line 11 with the generated GUID
 
 4. **Build the installer:**
    ```powershell
@@ -102,7 +102,7 @@ cd tools
 .\build_and_package.ps1 -Clean
 
 # Test the installer
-cd ..\output
+cd ..\src\output
 # Double-click AemulusXRReporting.msi to test
 ```
 
@@ -111,21 +111,21 @@ cd ..\output
 ```
 AMXR_Report/
 ├── src/
-│   └── bin/
-│       └── Release/
-│           └── net8.0-windows10.0.26100.0/
-│               ├── Aemulus XR Reporting App.exe
-│               ├── *.dll (dependencies)
-│               └── platform-tools/
-│                   ├── adb.exe
-│                   └── AdbWinApi.dll
-├── installer/
-│   └── AemulusXRReporting.wxs
-├── output/
-│   └── AemulusXRReporting.msi  ← Final installer
+│   ├── bin/
+│   │   └── Release/
+│   │       └── net8.0-windows10.0.26100.0/
+│   │           ├── Aemulus XR Reporting App.exe
+│   │           ├── *.dll (dependencies)
+│   │           └── platform-tools/
+│   │               ├── adb.exe
+│   │               └── AdbWinApi.dll
+│   ├── installer/
+│   │   └── AemulusXRReporting.wxs
+│   └── output/
+│       └── AemulusXRReporting.msi  ← Final installer
 └── tools/
-    ├── build_and_package.bat
-    └── verify_prerequisites.bat
+    ├── build_and_package.ps1
+    └── verify_prerequisites.ps1
 ```
 
 ## Common Scenarios
@@ -293,7 +293,7 @@ wix build AemulusXRReporting.wxs ^
 
 ```batch
 # Install silently
-msiexec /i output\AemulusXRReporting.msi /quiet /qn /l*v install.log
+msiexec /i src\output\AemulusXRReporting.msi /quiet /qn /l*v install.log
 
 # Check installation log
 notepad install.log
@@ -355,7 +355,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: installer
-          path: output/AemulusXRReporting.msi
+          path: src/output/AemulusXRReporting.msi
 ```
 
 ### Azure DevOps Example
@@ -385,14 +385,14 @@ steps:
 
   - task: PublishBuildArtifacts@1
     inputs:
-      pathToPublish: 'output/AemulusXRReporting.msi'
+      pathToPublish: 'src/output/AemulusXRReporting.msi'
       artifactName: 'installer'
 ```
 
 ## Additional Resources
 
-- **Detailed Setup**: See [installer/SETUP_GUIDE.md](../installer/SETUP_GUIDE.md)
-- **Installer Documentation**: See [installer/README.md](../installer/README.md)
+- **Detailed Setup**: See [src/installer/SETUP_GUIDE.md](../src/installer/SETUP_GUIDE.md)
+- **Installer Documentation**: See [src/installer/README.md](../src/installer/README.md)
 - **WiX Documentation**: https://wixtoolset.org/docs/
 - **.NET Publishing**: https://learn.microsoft.com/en-us/dotnet/core/deploying/
 

@@ -115,8 +115,8 @@ function Get-FormattedFileSize {
 
 $ScriptRoot = Split-Path -Parent $PSScriptRoot
 $SrcDir = Join-Path $ScriptRoot "src"
-$InstallerDir = Join-Path $ScriptRoot "installer"
-$OutputDir = Join-Path $ScriptRoot "output"
+$InstallerDir = Join-Path $SrcDir "installer"
+$OutputDir = Join-Path $SrcDir "output"
 $ProjectFile = Join-Path $SrcDir "Aemulus XR Reporting App.csproj"
 $WxsFile = Join-Path $InstallerDir "AemulusXRReporting.wxs"
 $OutputMsi = Join-Path $OutputDir "AemulusXRReporting.msi"
