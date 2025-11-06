@@ -1,0 +1,74 @@
+{
+    "version": "2.0.0",
+    "options": {
+        "cwd": "${workspaceFolder}"
+    },
+    "tasks": [
+        {
+            "label": "🔨 build (Release)",
+            "command": "dotnet",
+            "type": "shell",
+            "args": [
+                "build",
+                "\"${workspaceFolder}/src/Aemulus XR Reporting.sln\"",
+                "-c",
+                "Release"
+            ],
+            "group": "build",
+            "command": "${command:dotnet.build}",
+            "problemMatcher": "$msCompile",
+            "presentation": {
+                "reveal": "silent",
+                "revealProblems": "onProblem",
+                "close": true
+            }
+        },
+        {
+            "label": "🐛 build (Debug)",
+            "command": "dotnet",
+            "type": "shell",
+            "args": [
+                "build",
+                "\"${workspaceFolder}/src/Aemulus XR Reporting.sln\"",
+                "-c",
+                "Debug"
+            ],
+            "group": "build",
+            "problemMatcher": "$msCompile",
+            "presentation": {
+                "reveal": "silent",
+                "revealProblems": "onProblem",
+                "close": true
+            }
+        },
+        {
+            "label": "🧹 clean",
+            "command": "dotnet",
+            "type": "shell",
+            "args": [
+                "clean",
+                "\"${workspaceFolder}/src/Aemulus XR Reporting.sln\""
+            ],
+            "group": "build",
+            "problemMatcher": "$msCompile",
+            "presentation": {
+                "reveal": "always"
+            }
+        },
+        {
+            "label": "♻️ rebuild (Release)",
+            "dependsOrder": "sequence",
+            "dependsOn": [
+                "🧹 clean",
+                "🔨 build (Release)"
+            ],
+            "group": "build",
+            "problemMatcher": "$msCompile",
+            "presentation": {
+                "reveal": "silent",
+                "revealProblems": "onProblem",
+                "close": true
+            }
+        }
+    ]
+}

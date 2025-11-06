@@ -14,14 +14,26 @@ namespace Aemulus_XR_Reporting_App
 		[STAThread]
 		static void Main()
 		{
-			// Load persisted settings (if any) before UI starts
-			try { Helpers.SettingsManager.LoadSettings(); } catch { }
-			var logRepository = LogManager.GetRepository(Assembly.GetEntryAssembly());
+			// Configure logging first
+			var assembly = Assembly.GetEntryAssembly() ?? throw new InvalidOperationException("Entry assembly not found");
+			var logRepository = LogManager.GetRepository(assembly);
 			XmlConfigurator.Configure(logRepository, new FileInfo("log4net.config"));
 
-			// To customize application configuration such as set high DPI settings or default font,
-			// see https://aka.ms/applicationconfiguration.
+			// Initialize application configuration
 			ApplicationConfiguration.Initialize();
+
+			// Load settings after application is initialized
+			try
+			{
+				log.Debug($"Application.StartupPath before loading settings: {Application.StartupPath}");
+				Helpers.SettingsManager.LoadSettings();
+				log.Debug($"Application.StartupPath after loading settings: {Application.StartupPath}");
+			}
+			catch (Exception ex)
+			{
+				log.Error("Failed to load settings", ex);
+			}
+
 			Application.Run(new frmMain());
 		}
 	}
