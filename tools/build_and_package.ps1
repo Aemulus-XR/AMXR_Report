@@ -140,7 +140,7 @@ Write-Host ""
 
 #region Step 1: Check Prerequisites
 
-Write-Step "Checking prerequisites..." 1 7
+Write-Step "Checking prerequisites..." 1 8
 
 # Check .NET SDK
 if (-not (Test-CommandExists "dotnet")) {
@@ -181,7 +181,7 @@ Write-Success "WiX source file found"
 
 #region Step 2: Clean Build (Optional)
 
-Write-Step "Build preparation..." 2 7
+Write-Step "Build preparation..." 2 8
 
 if ($Clean) {
     Write-Info "Cleaning previous builds..."
@@ -241,7 +241,7 @@ if (-not $SkipBuild) {
     }
 }
 else {
-    Write-Step "Skipping NuGet restore..." 3 7
+    Write-Step "Skipping NuGet restore..." 3 8
     Write-Info "Build step skipped as requested"
 }
 
@@ -250,7 +250,7 @@ else {
 #region Step 4: Build Application
 
 if (-not $SkipBuild) {
-    Write-Step "Building application..." 4 7
+    Write-Step "Building application..." 4 8
 
     try {
         $buildType = if ($SelfContained) { "self-contained (includes .NET runtime)" } else { "framework-dependent (requires .NET 8)" }
@@ -289,7 +289,7 @@ if (-not $SkipBuild) {
     }
 }
 else {
-    Write-Step "Skipping build..." 4 7
+    Write-Step "Skipping build..." 4 8
     Write-Info "Using existing build artifacts"
 }
 
@@ -297,7 +297,7 @@ else {
 
 #region Step 5: Create Output Directory
 
-Write-Step "Preparing output directory..." 5 7
+Write-Step "Preparing output directory..." 5 8
 
 if (-not (Test-Path $OutputDir)) {
     New-Item -ItemType Directory -Path $OutputDir -Force | Out-Null
@@ -317,7 +317,7 @@ if (Test-Path $OutputMsi) {
 
 #region Step 6: Create Shipping Folder
 
-Write-Step "Creating Shipping folder..." 6 7
+Write-Step "Creating Shipping folder..." 6 8
 
 # Determine the correct build output path
 if ($SelfContained) {
@@ -380,9 +380,38 @@ Write-Info "Location: $ShippingDir"
 
 #endregion
 
-#region Step 7: Build WiX Installer
+#region Step 7: Convert Documentation
 
-Write-Step "Building WiX installer..." 7 7
+Write-Step "Converting documentation..." 7 8
+
+try {
+    $ConvertDocsScript = Join-Path $PSScriptRoot "convert_docs.ps1"
+
+    if (Test-Path $ConvertDocsScript) {
+        # Run doc conversion with SkipPdf parameter (images in USER_README cause PDF issues)
+        & powershell.exe -NoProfile -File $ConvertDocsScript -SkipPdf
+
+        if ($LASTEXITCODE -eq 0) {
+            Write-Success "Documentation converted successfully"
+        }
+        else {
+            Write-Warning "Documentation conversion had warnings, but continuing..."
+        }
+    }
+    else {
+        Write-Warning "convert_docs.ps1 not found, skipping documentation conversion"
+    }
+}
+catch {
+    Write-Warning "Documentation conversion failed: $($_.Exception.Message)"
+    Write-Info "Continuing with build..."
+}
+
+#endregion
+
+#region Step 8: Build WiX Installer
+
+Write-Step "Building WiX installer..." 8 8
 
 try {
     # Determine the correct build output path
