@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "README.md",
-                "mode": "preview",
+                "file": "notes/USER_README.md",
+                "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "README"
+              "title": "USER_README"
             }
           }
         ]
@@ -193,7 +193,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 261.5
+    "width": 200,
+    "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -211,6 +212,17 @@
   },
   "active": "e7a7b303c61786dc",
   "lastOpenFiles": [
+    "assets/media/Pasted image 20251107084934.png",
+    "assets/media/Pasted image 20251107084951.png",
+    "notes/USER_README.md",
+    "04_Extras/assets/media",
+    "04_Extras/assets",
+    "04_Extras",
+    "src/Resources/Usb-Debugging-Prompt.png",
+    "assets/media/flow.png",
+    "assets/media/Unconfirmed 990840.crdownload",
+    "src/Resources/meta-quest-3.jpg",
+    "src/Resources/Aemulus_LogoSymbol_Blue1024.png",
     "README.md",
     "04_Extras/assets/media/Pasted image 20250923110603.png",
     "04_Extras/assets/media/TestMedia.jpg",
@@ -232,7 +244,6 @@
     "02_Calendar/Daily/2025-09-09.md",
     "04_Extras/assets/media/Pasted image 20250917141634.png",
     "04_Extras/assets/media/Pasted image 20250909164824.png",
-    "04_Extras/assets/media/Pasted image 20250909135415.png",
     "03_Cards/People/Ibrahim AL Balawi.md",
     "03_Cards/People/Fredric Gaba.md",
     "03_Cards/Business/Aemulus-XR.md",
@@ -240,21 +251,11 @@
     "+ Main/Untitled 1.md",
     "Whiteboard.md",
     "02_Calendar/Daily/2025-09-22.md",
-    "02_Calendar/Daily/2025-09-19.md",
-    "04_Extras/assets/media/Pasted image 20250917141506.png",
-    "04_Extras/assets/media/Pasted image 20250917141347.png",
-    "04_Extras/assets/media/Pasted image 20250917141221.png",
-    "04_Extras/assets/media/Pasted image 20250917140117.png",
-    "04_Extras/assets/media/Pasted image 20250917140016.png",
     "documentaiton",
     "documentation",
     "+ Main",
     "04_Extras/System/Templates",
-    "04_Extras/assets/media",
     "04_Extras/System",
-    "04_Extras/assets",
-    "04_Extras",
-    "01_Atlas",
-    "New folder"
+    "01_Atlas"
   ]
 }

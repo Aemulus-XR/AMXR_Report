@@ -73,14 +73,12 @@ For the Oculus Quest App - See Aemulus XR site for info about the full XR app - 
 
 
 WireFrame Flow:
-![image](https://github.com/user-attachments/assets/58ffbb13-9c46-4103-a34f-2f872b041bcd)
-
+![](assets/media/Pasted%20image%2020251107084934.png)
 
 **Screen 1: Setup Screen** 
 
 If no quest is detected (via adb)
-![image](https://github.com/user-attachments/assets/a79df923-3869-41fc-9ec5-d561581ce6ef)
-
+![](assets/media/Pasted%20image%2020251107084951.png)
 * This screen should only stay up until a quest device is detected.
 * We're assuming detection == usb debugging allowed, so once detection is possible, this screen should go away and Screen 2 should be visible/active. (if this assumption is wrong, we can re-work this page's requirements / UX as needed)
 
