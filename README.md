@@ -139,5 +139,7 @@ Credits
 *ScooterGitTemplate is licensed under the [MIT License](notes/LICENSE.md).*
 
 Project Link:  [AMXR_Report](https://github.com/Aemulus-XR/AMXR_Report)  
+
+
 [CHANGELOG](notes/CHANGELOG.md)  
 [TODO](notes/TODO.md)
