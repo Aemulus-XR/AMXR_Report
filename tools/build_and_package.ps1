@@ -388,8 +388,8 @@ try {
     $ConvertDocsScript = Join-Path $PSScriptRoot "convert_docs.ps1"
 
     if (Test-Path $ConvertDocsScript) {
-        # Run doc conversion with SkipPdf parameter (images in USER_README cause PDF issues)
-        & powershell.exe -NoProfile -File $ConvertDocsScript -SkipPdf
+        # Run doc conversion (LICENSE.md -> RTF, USER_README.md -> PDF)
+        & powershell.exe -NoProfile -File $ConvertDocsScript
 
         if ($LASTEXITCODE -eq 0) {
             Write-Success "Documentation converted successfully"

@@ -206,7 +206,14 @@ if (-not $SkipPdf) {
 
             try {
                 # Try using pandoc with wkhtmltopdf or other PDF engine
-                $pdfArgs = @($UserReadmeMd, "-o", $UserManualPdf, "--metadata", "title=Aemulus XR Reporting - User Manual")
+                # Set resource path to the directory containing the markdown file so images can be found
+                $UserReadmeDir = Split-Path -Parent $UserReadmeMd
+                $pdfArgs = @(
+                    $UserReadmeMd,
+                    "-o", $UserManualPdf,
+                    "--metadata", "title=Aemulus XR Reporting - User Manual",
+                    "--resource-path=$UserReadmeDir"
+                )
 
                 if ($wkhtmltopdfPath) {
                     $pdfArgs += "--pdf-engine=$wkhtmltopdfPath"
@@ -231,7 +238,8 @@ if (-not $SkipPdf) {
 
                 foreach ($engine in $engines) {
                     try {
-                        & $pandocPath $UserReadmeMd -o $UserManualPdf --metadata title="Aemulus XR Reporting - User Manual" --pdf-engine=$engine 2>&1 | Out-Null
+                        $UserReadmeDir = Split-Path -Parent $UserReadmeMd
+                        & $pandocPath $UserReadmeMd -o $UserManualPdf --metadata title="Aemulus XR Reporting - User Manual" --resource-path="$UserReadmeDir" --pdf-engine=$engine 2>&1 | Out-Null
 
                         if ($LASTEXITCODE -eq 0 -and (Test-Path $UserManualPdf)) {
                             Write-Success "User Manual PDF created using $engine`: $UserManualPdf"

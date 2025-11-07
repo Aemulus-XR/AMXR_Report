@@ -413,3 +413,5 @@ src/Shipping/
 .claude/**
 example_wix_installer_code/**
 .obsidian/
+*.dead
+src/installer/UserManual.pdf
