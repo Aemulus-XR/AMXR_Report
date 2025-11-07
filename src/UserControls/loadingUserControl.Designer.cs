@@ -1,4 +1,4 @@
-﻿namespace Aemulus_XR_Reporting_App
+namespace AemulusConnect
 {
 	using VisualElements;
 

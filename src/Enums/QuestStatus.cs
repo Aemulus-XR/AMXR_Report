@@ -1,4 +1,4 @@
-﻿namespace Aemulus_XR_Reporting_App.Enums
+namespace AemulusConnect.Enums
 {
 	public enum QuestStatus
 	{

@@ -1,30 +1,30 @@
-# AMXR_Report [![starline](https://starlines.qoo.monster/assets/Aemulus-XR/AMXR_Report)](https://github.com/qoomon/starline)
+# AemulusConnect [![starline](https://starlines.qoo.monster/assets/Aemulus-XR/AemulusConnect)](https://github.com/qoomon/starline)
 <div align="center">
 
   <img src="assets/media/logo.jpg" alt="logo" width="auto" height="auto" />
-    <h1><a href="https://github.com/Aemulus-XR/AMXR_Report">Aemulus-XR/AMXR_Report</a></h1>
+    <h1><a href="https://github.com/Aemulus-XR/AemulusConnect">Aemulus-XR/AemulusConnect</a></h1>
   <h3>Nulla nobis dicta iste minus dolor repellendus aspernatur atque</h3>
   
   
 <!-- Badges -->
 <p>
-  <a href="https://github.com/Aemulus-XR/AMXR_Report/graphs/contributors">
-    <img src="https://img.shields.io/github/contributors/Aemulus-XR/AMXR_Report" alt="contributors" />
+  <a href="https://github.com/Aemulus-XR/AemulusConnect/graphs/contributors">
+    <img src="https://img.shields.io/github/contributors/Aemulus-XR/AemulusConnect" alt="contributors" />
   </a>
   <a href="">
-    <img src="https://img.shields.io/github/last-commit/Aemulus-XR/AMXR_Report" alt="last update" />
+    <img src="https://img.shields.io/github/last-commit/Aemulus-XR/AemulusConnect" alt="last update" />
   </a>
-  <a href="https://github.com/Aemulus-XR/AMXR_Report/network/members">
-    <img src="https://img.shields.io/github/forks/Aemulus-XR/AMXR_Report" alt="forks" />
+  <a href="https://github.com/Aemulus-XR/AemulusConnect/network/members">
+    <img src="https://img.shields.io/github/forks/Aemulus-XR/AemulusConnect" alt="forks" />
   </a>
-  <a href="https://github.com/Aemulus-XR/AMXR_Report/stargazers">
-    <img src="https://img.shields.io/github/stars/Aemulus-XR/AMXR_Report" alt="stars" />
+  <a href="https://github.com/Aemulus-XR/AemulusConnect/stargazers">
+    <img src="https://img.shields.io/github/stars/Aemulus-XR/AemulusConnect" alt="stars" />
   </a>
-  <a href="https://github.com/Aemulus-XR/AMXR_Report/issues/">
-    <img src="https://img.shields.io/github/issues/Aemulus-XR/AMXR_Report" alt="open issues" />
+  <a href="https://github.com/Aemulus-XR/AemulusConnect/issues/">
+    <img src="https://img.shields.io/github/issues/Aemulus-XR/AemulusConnect" alt="open issues" />
   </a>
-  <a href="https://github.com/Aemulus-XR/AMXR_Report/blob/main/notes/LICENSE.md">
-    <img src="https://img.shields.io/github/license/Aemulus-XR/AMXR_Report.svg" alt="license" />
+  <a href="https://github.com/Aemulus-XR/AemulusConnect/blob/main/notes/LICENSE.md">
+    <img src="https://img.shields.io/github/license/Aemulus-XR/AemulusConnect.svg" alt="license" />
   </a>
   <a href="https://discord.gg/gQH4mXWQRT">
     <!--<img src="https://img.shields.io/discord/704680098577514527?style=flat-square&label=%F0%9F%92%AC%20discord&color=00ACD7">-->
@@ -35,15 +35,15 @@
 <h4>
     <a href="https://tinyurl.com/3vf7whyd">View Demo</a>
   <span> · </span>
-    <a href="https://github.com/Aemulus-XR/AMXR_Report/blob/main/README.md">Documentation</a>
+    <a href="https://github.com/Aemulus-XR/AemulusConnect/blob/main/README.md">Documentation</a>
   <span> · </span>
-    <a href="https://github.com/Aemulus-XR/AMXR_Report/issues/new?template=bug_report.md">Report Bug</a>
+    <a href="https://github.com/Aemulus-XR/AemulusConnect/issues/new?template=bug_report.md">Report Bug</a>
   <span> · </span>
-    <a href="https://github.com/Aemulus-XR/AMXR_Report/issues/new?template=feature_request.md">Request Feature</a>
+    <a href="https://github.com/Aemulus-XR/AemulusConnect/issues/new?template=feature_request.md">Request Feature</a>
   </h4>
 </div>
 
-**AMXR_Report** is voluptatibus magni nemo est. Nulla nobis dicta iste minus dolor repellendus aspernatur atque. Earum expedita aut inventore tempora fugiat deleniti. Molestias minima nam expedita beatae totam ipsa reprehenderit animi. Occaecati quibusdam beatae ducimus voluptate ut doloribus vitae amet. Quia ut ut voluptate dignissimos adipisci dolorum rem.
+**AemulusConnect** is voluptatibus magni nemo est. Nulla nobis dicta iste minus dolor repellendus aspernatur atque. Earum expedita aut inventore tempora fugiat deleniti. Molestias minima nam expedita beatae totam ipsa reprehenderit animi. Occaecati quibusdam beatae ducimus voluptate ut doloribus vitae amet. Quia ut ut voluptate dignissimos adipisci dolorum rem.
 
 ## Getting Started with This Template
 
@@ -63,12 +63,12 @@
 
 Branches
 --------
-`main` is the [deployed](https://Aemulus-XR.github.io/AMXR_Report/) branch.  The repo doesn't currently contain any other historic or dev branches.
+`main` is the [deployed](https://Aemulus-XR.github.io/AemulusConnect/) branch.  The repo doesn't currently contain any other historic or dev branches.
 
 Repo Layout
 -----------
 ```
-AMXR_Report
+AemulusConnect
 ├───_layouts                     # Jekyll layouts for GitHub Pages
 ├───.github
 │   ├───gitignore-templates      # Example .gitignore files (Unreal, Unity, Python, etc.)
@@ -129,7 +129,7 @@ Usage
 
 Contributions / Contact
 -----------------------
-- Please [file an issue](https://github.com/Aemulus-XR/AMXR_Report/issues/new), or [grab a fork](https://github.com/Aemulus-XR/AMXR_Report/fork), hack away, and submit a [pull request](https://github.com/Aemulus-XR/AMXR_Report/pulls).
+- Please [file an issue](https://github.com/Aemulus-XR/AemulusConnect/issues/new), or [grab a fork](https://github.com/Aemulus-XR/AemulusConnect/fork), hack away, and submit a [pull request](https://github.com/Aemulus-XR/AemulusConnect/pulls).
 - Contact me at [linkedin.com/in/scottkirvan/](https://www.linkedin.com/in/scottkirvan/)
 - You can also contact me at my [discord](https://discord.gg/TSKHvVFYxB) server, I'm cptvideo.
 
@@ -138,7 +138,7 @@ Credits
 **[ScooterGitTemplate](https://github.com/ScottKirvan/ScooterGitTemplate) Copyright (c) (2025):** [Scott Kirvan](https://github.com/ScottKirvan)  - All rights reserved
 *ScooterGitTemplate is licensed under the [MIT License](notes/LICENSE.md).*
 
-Project Link:  [AMXR_Report](https://github.com/Aemulus-XR/AMXR_Report)  
+Project Link:  [AemulusConnect](https://github.com/Aemulus-XR/AemulusConnect)  
 
 
 [CHANGELOG](notes/CHANGELOG.md)  

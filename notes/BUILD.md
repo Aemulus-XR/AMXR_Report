@@ -1,6 +1,6 @@
 # Building and Packaging Guide
 
-Quick reference for building the Aemulus XR Reporting application and creating installers.
+Quick reference for building the AemulusConnect Application and creating installers.
 
 ## Quick Start
 
@@ -20,7 +20,7 @@ cd tools
 .\build_and_package.ps1 -Clean
 ```
 
-This creates `output\AemulusXRReporting.msi`
+This creates `output\AemulusConnect.msi`
 
 ## Development Workflow
 
@@ -33,7 +33,7 @@ cd tools
 
 ### Release Build
 ```powershell
-# Update version in installer\AemulusXRReporting.wxs first
+# Update version in installer\AemulusConnect.wxs first
 cd tools
 .\build_and_package.ps1 -Clean
 ```
@@ -71,7 +71,7 @@ If this is your first time building:
    [guid]::NewGuid()
    ```
 
-2. **Update `installer\AemulusXRReporting.wxs` line 11** with the generated GUID
+2. **Update `installer\AemulusConnect.wxs` line 11** with the generated GUID
 
 3. **Never change this GUID** after your first release!
 
@@ -112,10 +112,10 @@ Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
 ## Directory Structure
 
 ```
-AMXR_Report/
+AemulusConnect/
 ├── src/                    # Application source code
 ├── installer/              # WiX installer configuration
-│   ├── AemulusXRReporting.wxs
+│   ├── AemulusConnect.wxs
 │   ├── README.md          # Detailed installer documentation
 │   └── SETUP_GUIDE.md     # Step-by-step setup guide
 ├── tools/                  # Build automation scripts
@@ -123,7 +123,7 @@ AMXR_Report/
 │   ├── verify_prerequisites.ps1
 │   └── README.md          # Tools documentation
 └── output/                 # Build output (created automatically)
-    └── AemulusXRReporting.msi
+    └── AemulusConnect.msi
 ```
 
 ## Detailed Documentation
@@ -137,11 +137,11 @@ AMXR_Report/
 ```powershell
 # Build application
 cd src
-dotnet build "Aemulus XR Reporting App.csproj" --configuration Release
+dotnet build "AemulusConnect.csproj" --configuration Release
 
 # Create installer
 cd ..\installer
-wix build AemulusXRReporting.wxs -out ..\output\AemulusXRReporting.msi
+wix build AemulusConnect.wxs -out ..\output\AemulusConnect.msi
 ```
 
 ## Distribution
@@ -149,15 +149,15 @@ wix build AemulusXRReporting.wxs -out ..\output\AemulusXRReporting.msi
 ### Test Installation
 ```powershell
 # Install with logging
-msiexec /i output\AemulusXRReporting.msi /l*v install.log
+msiexec /i output\AemulusConnect.msi /l*v install.log
 
 # Silent install
-msiexec /i output\AemulusXRReporting.msi /quiet /qn
+msiexec /i output\AemulusConnect.msi /quiet /qn
 ```
 
 ### Code Signing (Optional)
 ```powershell
-signtool sign /f certificate.pfx /p password /tr http://timestamp.digicert.com output\AemulusXRReporting.msi
+signtool sign /f certificate.pfx /p password /tr http://timestamp.digicert.com output\AemulusConnect.msi
 ```
 
 ## System Requirements

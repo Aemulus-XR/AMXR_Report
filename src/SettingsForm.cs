@@ -1,9 +1,9 @@
 using System;
 using System.Drawing;
 using System.Windows.Forms;
-using Aemulus_XR_Reporting_App.Strings;
+using AemulusConnect.Strings;
 
-namespace Aemulus_XR_Reporting_App
+namespace AemulusConnect
 {
     public class SettingsForm : Form
     {

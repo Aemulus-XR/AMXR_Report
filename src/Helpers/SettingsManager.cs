@@ -2,17 +2,17 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
-using Aemulus_XR_Reporting_App.Strings;
+using AemulusConnect.Strings;
 
-namespace Aemulus_XR_Reporting_App.Helpers
+namespace AemulusConnect.Helpers
 {
     /// <summary>
-    /// Simple settings manager that persists key=value pairs to an INI-like file in %APPDATA%\AemulusXR\settings.ini
+    /// Simple settings manager that persists key=value pairs to an INI-like file in %APPDATA%\AemulusConnect\settings.ini
     /// Keeps it intentionally small and dependency-free.
     /// </summary>
     public static class SettingsManager
     {
-        private static readonly string AppFolder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "AemulusXR");
+        private static readonly string AppFolder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "AemulusConnect");
         private static readonly string SettingsFile = Path.Combine(AppFolder, "settings.ini");
 
         public static void LoadSettings()
@@ -70,7 +70,7 @@ namespace Aemulus_XR_Reporting_App.Helpers
                     Directory.CreateDirectory(AppFolder);
 
                 var sb = new StringBuilder();
-                sb.AppendLine("# Aemulus XR Reporting App settings");
+                sb.AppendLine("# AemulusConnect settings");
                 sb.AppendLine($"ReportsLocation={FSStrings.ReportsLocation}");
                 sb.AppendLine($"ArchiveLocation={FSStrings.ArchiveLocation}");
                 sb.AppendLine($"OutputLocation={FSStrings.OutputLocation}");

@@ -1,6 +1,6 @@
 # Build and Packaging Tools
 
-This directory contains automation scripts for building and packaging the Aemulus XR Reporting application.
+This directory contains automation scripts for building and packaging the AemulusConnect Application.
 
 ## Table of Contents
 
@@ -97,7 +97,7 @@ PowerShell script that builds the application and creates the MSI installer with
 6. Opens the output folder
 
 **Output:**
-- Location: `src\output\AemulusXRReporting.msi`
+- Location: `src\output\AemulusConnect.msi`
 - Build logs: Console output
 - Build artifacts: `src\bin\Release\`
 
@@ -187,7 +187,7 @@ PowerShell script that verifies the encoding and syntax of PowerShell scripts.
    ```powershell
    [guid]::NewGuid()
    ```
-   Update `src\installer\AemulusXRReporting.wxs` line 11 with the generated GUID
+   Update `src\installer\AemulusConnect.wxs` line 11 with the generated GUID
 
 4. **Build the installer:**
    ```powershell
@@ -205,26 +205,26 @@ cd tools
 
 # Test the installer
 cd ..\src\output
-# Double-click AemulusXRReporting.msi to test
+# Double-click AemulusConnect.msi to test
 ```
 
 ## Build Output Structure
 
 ```
-AMXR_Report/
+AemulusConnect/
 ├── src/
 │   ├── bin/
 │   │   └── Release/
 │   │       └── net8.0-windows10.0.26100.0/
-│   │           ├── Aemulus XR Reporting App.exe
+│   │           ├── AemulusConnect.exe
 │   │           ├── *.dll (dependencies)
 │   │           └── platform-tools/
 │   │               ├── adb.exe
 │   │               └── AdbWinApi.dll
 │   ├── installer/
-│   │   └── AemulusXRReporting.wxs
+│   │   └── AemulusConnect.wxs
 │   └── output/
-│       └── AemulusXRReporting.msi  ← Final installer
+│       └── AemulusConnect.msi  ← Final installer
 └── tools/
     ├── build_and_package.ps1
     └── verify_prerequisites.ps1
@@ -276,7 +276,7 @@ cd tools
 ### Scenario 5: Pre-Release Checklist
 
 ```powershell
-# 1. Update version number in installer\AemulusXRReporting.wxs
+# 1. Update version number in installer\AemulusConnect.wxs
 # 2. Verify prerequisites
 .\verify_prerequisites.ps1 -Detailed
 
@@ -345,7 +345,7 @@ powershell -ExecutionPolicy Bypass -File .\build_and_package.ps1
 
 **Solution**:
 1. Check `src\bin\Release\net8.0-windows10.0.26100.0\` exists
-2. Verify all files referenced in `AemulusXRReporting.wxs` exist
+2. Verify all files referenced in `AemulusConnect.wxs` exist
 3. Update file paths in .wxs if necessary
 
 ### "Access denied" when building
@@ -374,7 +374,7 @@ Edit the build script or use MSBuild directly:
 
 ```batch
 cd src
-dotnet build "Aemulus XR Reporting App.csproj" ^
+dotnet build "AemulusConnect.csproj" ^
   --configuration Release ^
   --runtime win-x64 ^
   /p:PublishReadyToRun=true ^
@@ -385,8 +385,8 @@ dotnet build "Aemulus XR Reporting App.csproj" ^
 
 ```batch
 cd installer
-wix build AemulusXRReporting.wxs ^
-  -out ..\output\AemulusXRReporting.msi ^
+wix build AemulusConnect.wxs ^
+  -out ..\output\AemulusConnect.msi ^
   -ext WixToolset.UI.wixext ^
   -d ProductVersion=1.2.3.4
 ```
@@ -395,7 +395,7 @@ wix build AemulusXRReporting.wxs ^
 
 ```batch
 # Install silently
-msiexec /i src\output\AemulusXRReporting.msi /quiet /qn /l*v install.log
+msiexec /i src\output\AemulusConnect.msi /quiet /qn /l*v install.log
 
 # Check installation log
 notepad install.log
@@ -457,7 +457,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: installer
-          path: src/output/AemulusXRReporting.msi
+          path: src/output/AemulusConnect.msi
 ```
 
 ### Azure DevOps Example
@@ -487,7 +487,7 @@ steps:
 
   - task: PublishBuildArtifacts@1
     inputs:
-      pathToPublish: 'src/output/AemulusXRReporting.msi'
+      pathToPublish: 'src/output/AemulusConnect.msi'
       artifactName: 'installer'
 ```
 

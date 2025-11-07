@@ -102,8 +102,8 @@ function Get-WixVersion {
 $ScriptRoot = Split-Path -Parent $PSScriptRoot
 $SrcDir = Join-Path $ScriptRoot "src"
 $InstallerDir = Join-Path $SrcDir "installer"
-$ProjectFile = Join-Path $SrcDir "Aemulus XR Reporting App.csproj"
-$WxsFile = Join-Path $InstallerDir "AemulusXRReporting.wxs"
+$ProjectFile = Join-Path $SrcDir "AemulusConnect.csproj"
+$WxsFile = Join-Path $InstallerDir "AemulusConnect.wxs"
 
 $AllOk = $true
 
@@ -113,7 +113,7 @@ $AllOk = $true
 
 Write-Host ""
 Write-Host "============================================================================" -ForegroundColor Cyan
-Write-Host " Aemulus XR Reporting - Prerequisites Check" -ForegroundColor Cyan
+Write-Host " AemulusConnect - Prerequisites Check" -ForegroundColor Cyan
 Write-Host "============================================================================" -ForegroundColor Cyan
 Write-Host ""
 
@@ -239,7 +239,7 @@ if (Test-Path $WxsFile) {
     if ($wxsContent -match '12345678-1234-1234-1234-123456789012') {
         Write-CheckResult -Status Warning -Message "UpgradeCode still has default value"
         Write-DetailInfo "Generate a unique GUID: [guid]::NewGuid()"
-        Write-DetailInfo "Update line 11 in AemulusXRReporting.wxs"
+        Write-DetailInfo "Update line 11 in AemulusConnect.wxs"
         Write-DetailInfo "See installer\SETUP_GUIDE.md for details"
     }
     else {
@@ -282,7 +282,7 @@ Write-Host "Checking build output..." -ForegroundColor Yellow
 $buildOutputDir = Join-Path $SrcDir "bin\Release\net8.0-windows10.0.26100.0"
 
 if (Test-Path $buildOutputDir) {
-    $exePath = Join-Path $buildOutputDir "Aemulus XR Reporting App.exe"
+    $exePath = Join-Path $buildOutputDir "AemulusConnect.exe"
 
     if (Test-Path $exePath) {
         Write-CheckResult -Status Pass -Message "Previous build output found"

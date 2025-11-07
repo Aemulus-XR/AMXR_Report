@@ -2,11 +2,11 @@
 <Wix xmlns="http://wixtoolset.org/schemas/v4/wxs"
      xmlns:ui="http://wixtoolset.org/schemas/v4/wxs/ui">
   <!--
-    Aemulus XR Reporting Application Installer
-    This WiX installer creates an MSI package for the Aemulus XR Reporting application
+    AemulusConnect Application Installer
+    This WiX installer creates an MSI package for the AemulusConnect Application
   -->
 
-  <?define ProductName = "Aemulus XR Reporting" ?>
+  <?define ProductName = "AemulusConnect" ?>
   <?define ProductVersion = "1.0.0.0" ?>
   <?define Manufacturer = "Aemulus XR" ?>
   <?define UpgradeCode = "8b7c49af-4352-4886-a835-dd52f7b44131" ?>
@@ -54,13 +54,13 @@
     </Property>
 
     <!-- Custom action for finish dialog -->
-    <Property Id="WIXUI_EXITDIALOGOPTIONALCHECKBOXTEXT" Value="Launch Aemulus XR Reporting" />
+    <Property Id="WIXUI_EXITDIALOGOPTIONALCHECKBOXTEXT" Value="Launch AemulusConnect" />
 
     <!-- Launch application -->
     <CustomAction
       Id="LaunchApplication"
       Directory="BINFOLDER"
-      ExeCommand="[BINFOLDER]Aemulus XR Reporting App.exe"
+      ExeCommand="[BINFOLDER]AemulusConnect.exe"
       Execute="immediate"
       Impersonate="yes"
       Return="asyncNoWait" />
@@ -91,16 +91,16 @@
       <!-- Main executable -->
       <Component Id="MainExecutable" Guid="d30b4069-00ca-424a-9e68-5b43fdfa7d74">
         <File
-          Id="AemulusXRReportingAppExe"
-          Source="$(var.BuildOutputPath)\Aemulus XR Reporting App.exe"
+          Id="AemulusConnectExe"
+          Source="$(var.BuildOutputPath)\AemulusConnect.exe"
           KeyPath="yes">
           <!-- File association and capabilities can be added here if needed -->
         </File>
 
         <!-- All DLL dependencies -->
-        <File Source="$(var.BuildOutputPath)\Aemulus XR Reporting App.dll" />
-        <File Source="$(var.BuildOutputPath)\Aemulus XR Reporting App.runtimeconfig.json" />
-        <File Source="$(var.BuildOutputPath)\Aemulus XR Reporting App.deps.json" />
+        <File Source="$(var.BuildOutputPath)\AemulusConnect.dll" />
+        <File Source="$(var.BuildOutputPath)\AemulusConnect.runtimeconfig.json" />
+        <File Source="$(var.BuildOutputPath)\AemulusConnect.deps.json" />
 
         <!-- NuGet package dependencies -->
         <File Source="$(var.BuildOutputPath)\AdvancedSharpAdbClient.dll" />
@@ -138,8 +138,8 @@
         <Shortcut
           Id="ApplicationStartMenuShortcut"
           Name="$(var.ProductName)"
-          Description="Aemulus XR Reporting Application"
-          Target="[BINFOLDER]Aemulus XR Reporting App.exe"
+          Description="AemulusConnect Application"
+          Target="[BINFOLDER]AemulusConnect.exe"
           WorkingDirectory="BINFOLDER"
           Icon="AppIcon.exe" />
 
@@ -147,7 +147,7 @@
         <Shortcut
           Id="UserManualShortcut"
           Name="User Manual"
-          Description="Open the Aemulus XR Reporting User Manual"
+          Description="Open the AemulusConnect User Manual"
           Target="[DOCUMENTATIONFOLDER]UserManual.pdf" />
 
         <!-- Uninstall shortcut -->
@@ -179,8 +179,8 @@
         <Shortcut
           Id="ApplicationDesktopShortcut"
           Name="$(var.ProductName)"
-          Description="Aemulus XR Reporting Application"
-          Target="[BINFOLDER]Aemulus XR Reporting App.exe"
+          Description="AemulusConnect Application"
+          Target="[BINFOLDER]AemulusConnect.exe"
           WorkingDirectory="BINFOLDER"
           Icon="AppIcon.exe" />
 
@@ -211,7 +211,7 @@
     <!-- Features to install -->
     <Feature
       Id="ProductFeature"
-      Title="Aemulus XR Reporting Application"
+      Title="AemulusConnect Application"
       ConfigurableDirectory="INSTALLFOLDER"
       Level="1"
       Description="The main application files and Start Menu shortcuts">

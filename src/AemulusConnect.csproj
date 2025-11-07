@@ -3,7 +3,7 @@
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
     <TargetFramework>net8.0-windows10.0.26100.0</TargetFramework>
-    <RootNamespace>Aemulus_XR_Reporting_App</RootNamespace>
+    <RootNamespace>AemulusConnect</RootNamespace>
     <Nullable>enable</Nullable>
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
@@ -12,7 +12,7 @@
     <ForceDesignerDpiUnaware>true</ForceDesignerDpiUnaware>
     <FileVersion>1.000</FileVersion>
     <AssemblyVersion>1.000</AssemblyVersion>
-    <StartupObject>Aemulus_XR_Reporting_App.Program</StartupObject>
+    <StartupObject>AemulusConnect.Program</StartupObject>
     <SupportedOSPlatformVersion>10.0.26100.0</SupportedOSPlatformVersion>
     <Version>1.000</Version>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>

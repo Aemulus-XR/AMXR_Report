@@ -211,7 +211,7 @@ if (-not $SkipPdf) {
                 $pdfArgs = @(
                     $UserReadmeMd,
                     "-o", $UserManualPdf,
-                    "--metadata", "title=Aemulus XR Reporting - User Manual",
+                    "--metadata", "title=AemulusConnect - User Manual",
                     "--resource-path=$UserReadmeDir"
                 )
 
@@ -239,7 +239,7 @@ if (-not $SkipPdf) {
                 foreach ($engine in $engines) {
                     try {
                         $UserReadmeDir = Split-Path -Parent $UserReadmeMd
-                        & $pandocPath $UserReadmeMd -o $UserManualPdf --metadata title="Aemulus XR Reporting - User Manual" --resource-path="$UserReadmeDir" --pdf-engine=$engine 2>&1 | Out-Null
+                        & $pandocPath $UserReadmeMd -o $UserManualPdf --metadata title="AemulusConnect - User Manual" --resource-path="$UserReadmeDir" --pdf-engine=$engine 2>&1 | Out-Null
 
                         if ($LASTEXITCODE -eq 0 -and (Test-Path $UserManualPdf)) {
                             Write-Success "User Manual PDF created using $engine`: $UserManualPdf"

@@ -1,8 +1,8 @@
-﻿using log4net;
+using log4net;
 
 using System.Diagnostics;
 
-namespace Aemulus_XR_Reporting_App.Strings
+namespace AemulusConnect.Strings
 {
 	public static class FSStrings
 	{

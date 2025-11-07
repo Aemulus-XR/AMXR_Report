@@ -1,7 +1,7 @@
-﻿using System.ComponentModel;
+using System.ComponentModel;
 using System.Drawing.Drawing2D;
 
-namespace Aemulus_XR_Reporting_App.VisualElements
+namespace AemulusConnect.VisualElements
 {
 	internal class RoundedButton : Button
 	{

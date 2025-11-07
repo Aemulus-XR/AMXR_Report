@@ -1,4 +1,4 @@
-# Code Review: Aemulus XR Reporting Application
+# Code Review: AemulusConnect Application
 
 **Review Date:** 2025-11-06
 **Reviewer:** Claude (Automated Code Review)
@@ -42,7 +42,7 @@ This is a well-structured Windows Forms application with solid architecture and 
 ## Project Overview
 
 ### Project Information
-- **Name:** Aemulus XR Reporting Application
+- **Name:** AemulusConnect Application
 - **Type:** Windows Desktop Application (.NET 8.0 with Windows Forms)
 - **Target Framework:** net8.0-windows10.0.26100.0
 - **Language:** C#
@@ -70,7 +70,7 @@ Desktop application that facilitates downloading and managing XR report files fr
 
 ### Project Structure
 ```
-D:\1\GitRepos\Aemulus-XR\AMXR_Report\
+D:\1\GitRepos\Aemulus-XR\AemulusConnect\
 ├── src/
 │   ├── Enums/                    # Application state enumerations (2 files)
 │   ├── Helpers/                  # Core business logic classes (2 files)
@@ -340,7 +340,7 @@ Should return `Task` for proper async handling.
 **Lines of Code:** 91
 **Responsibility:** INI-style settings management
 
-**Location:** `%APPDATA%\AemulusXR\settings.ini`
+**Location:** `%APPDATA%\AemulusConnect\settings.ini`
 
 **Features:**
 - Best-effort loading (silent failure)
@@ -1161,7 +1161,7 @@ private void UpdateOkButtonState()
 **Code Example:**
 ```csharp
 // Constants.cs
-namespace Aemulus_XR_Reporting_App
+namespace AemulusConnect
 {
     /// <summary>
     /// Application-wide constants

@@ -7,7 +7,7 @@
             "command": "dotnet",
             "args": [
                 "build",
-                "./Aemulus XR Reporting.sln",
+                "./AemulusConnect.sln",
                 "-c",
                 "Release"
             ],
@@ -27,7 +27,7 @@
             "command": "dotnet",
             "args": [
                 "build",
-                "./Aemulus XR Reporting.sln",
+                "./AemulusConnect.sln",
                 "-c",
                 "Debug"
             ],

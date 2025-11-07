@@ -1,7 +1,7 @@
-# AMXR_Report
+# AemulusConnect
 
 ## Overview
-AMXR_Report is a Windows PC application developed in C# for fetching and reporting data from an Oculus Quest device. The application uses the Android Debug Bridge (ADB) to communicate with the Quest device, retrieve reports, and display the status of these operations to the user.
+AemulusConnect is a Windows PC application developed in C# for fetching and reporting data from an Oculus Quest device. The application uses the Android Debug Bridge (ADB) to communicate with the Quest device, retrieve reports, and display the status of these operations to the user.
 
 ## Key Features
 - **Device Detection**: Detects when an Oculus Quest device is connected or disconnected.
@@ -62,7 +62,7 @@ AMXR_Report is a Windows PC application developed in C# for fetching and reporti
 
 For more information about the Oculus Quest app, visit the [Aemulus XR site](https://www.aemulus-xr.com/).
 
-# AMXR_Report (Original Project Requirements)
+# AemulusConnect (Original Project Requirements)
 A fetching / reporting app for Aemulus XR
 To be developed in C# for Windows PC
 
@@ -115,10 +115,10 @@ Copy all files from the Quest Aemulus Directory:
 (there should eventually be both PDFs and CSV files with matching names.)
 
 To a folder with the copy date as it's name:
-Desktop/AemulusXRReporting/Reports-[YYYY-MM-DD]/
+Desktop/AemulusConnect/Reports-[YYYY-MM-DD]/
 
 When copying down to desktop, add "_Archived_[YYYY-MM-DD]" to the copied file name.
 
-View Reports button should always open the directory on the PC: Desktop/AemulusXRReporting/
+View Reports button should always open the directory on the PC: Desktop/AemulusConnect/
 
 

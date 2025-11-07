@@ -1,6 +1,6 @@
-﻿using System.Drawing.Drawing2D;
+using System.Drawing.Drawing2D;
 
-namespace Aemulus_XR_Reporting_App.VisualElements
+namespace AemulusConnect.VisualElements
 {
     public class CustomProgressBar : ProgressBar
     {

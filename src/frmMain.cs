@@ -1,10 +1,10 @@
-namespace Aemulus_XR_Reporting_App
+namespace AemulusConnect
 {
 	using Helpers;
 	using Enums;
 	using log4net;
 	using System.Diagnostics;
-	using Aemulus_XR_Reporting_App.Strings;
+	using AemulusConnect.Strings;
 	using System.Drawing;
 
 	public partial class frmMain : Form
@@ -25,8 +25,8 @@ namespace Aemulus_XR_Reporting_App
 			versionParts = fullVersion.Split('+');
 			version = versionParts[0];
 			lblVersion.Text = "Version " + version;
-			Text = $"Aemulus XR Reporting App v{version}";
-			_logger.Info($"Aemulus Report App version {version} initialized at {DateTime.Now.ToString()}");
+			Text = $"AemulusConnect v{version}";
+			_logger.Info($"AemulusConnect version {version} initialized at {DateTime.Now.ToString()}");
 			_logger.Info($"Operating System: {os}");
 
 		}

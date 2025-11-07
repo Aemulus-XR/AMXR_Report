@@ -1,7 +1,7 @@
 #!/usr/bin/env pwsh
 <#
 .SYNOPSIS
-    Aemulus XR Reporting - Build and Package Script
+    AemulusConnect - Build and Package Script
 
 .DESCRIPTION
     This script automates the process of building the application and creating
@@ -118,9 +118,9 @@ $SrcDir = Join-Path $ScriptRoot "src"
 $InstallerDir = Join-Path $SrcDir "installer"
 $OutputDir = Join-Path $SrcDir "output"
 $ShippingDir = Join-Path $SrcDir "Shipping"
-$ProjectFile = Join-Path $SrcDir "Aemulus XR Reporting App.csproj"
-$WxsFile = Join-Path $InstallerDir "AemulusXRReporting.wxs"
-$OutputMsi = Join-Path $OutputDir "AemulusXRReporting.msi"
+$ProjectFile = Join-Path $SrcDir "AemulusConnect.csproj"
+$WxsFile = Join-Path $InstallerDir "AemulusConnect.wxs"
+$OutputMsi = Join-Path $OutputDir "AemulusConnect.msi"
 
 $BuildConfig = "Release"
 $TargetFramework = "net8.0-windows10.0.26100.0"
@@ -132,7 +132,7 @@ $RuntimeIdentifier = "win-x64"
 
 Write-Host ""
 Write-Host "============================================================================" -ForegroundColor Cyan
-Write-Host " Aemulus XR Reporting - Build and Package" -ForegroundColor Cyan
+Write-Host " AemulusConnect - Build and Package" -ForegroundColor Cyan
 Write-Host "============================================================================" -ForegroundColor Cyan
 Write-Host ""
 
@@ -339,10 +339,10 @@ Write-Info "Copying files to Shipping folder..."
 
 # Copy main application files
 $mainFiles = @(
-    "Aemulus XR Reporting App.exe",
-    "Aemulus XR Reporting App.dll",
-    "Aemulus XR Reporting App.runtimeconfig.json",
-    "Aemulus XR Reporting App.deps.json",
+    "AemulusConnect.exe",
+    "AemulusConnect.dll",
+    "AemulusConnect.runtimeconfig.json",
+    "AemulusConnect.deps.json",
     "AdvancedSharpAdbClient.dll",
     "log4net.dll",
     "log4net.config"
@@ -425,7 +425,7 @@ try {
     Write-Info "Using build output from: $BuildOutputPath"
 
     # Build using dotnet build with wixproj
-    $WixProj = Join-Path $InstallerDir "AemulusXRReporting.wixproj"
+    $WixProj = Join-Path $InstallerDir "AemulusConnect.wixproj"
 
     if (Test-Path $WixProj) {
         # Use wixproj for build (supports WiX 4 UI extension)

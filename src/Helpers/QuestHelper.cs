@@ -1,4 +1,4 @@
-﻿using Aemulus_XR_Reporting_App.Enums;
+using AemulusConnect.Enums;
 using AdvancedSharpAdbClient;
 using AdvancedSharpAdbClient.Models;
 using log4net;
@@ -6,7 +6,7 @@ using System.Diagnostics;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Net;
-using Aemulus_XR_Reporting_App.Strings;
+using AemulusConnect.Strings;
 using System.Windows.Forms;
 using AdvancedSharpAdbClient.Receivers;
 using System.Threading;
@@ -15,7 +15,7 @@ using System.IO;
 using System.Linq;
 using System.Collections.Generic;
 
-namespace Aemulus_XR_Reporting_App.Helpers
+namespace AemulusConnect.Helpers
 {
 	public class QuestHelper
 	{

@@ -2,7 +2,7 @@ using log4net;
 using log4net.Config;
 using System.Reflection;
 
-namespace Aemulus_XR_Reporting_App
+namespace AemulusConnect
 {
 	internal static class Program
 	{

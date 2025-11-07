@@ -1,7 +1,7 @@
-﻿using Aemulus_XR_Reporting_App.Enums;
+using AemulusConnect.Enums;
 using System.ComponentModel;
 
-namespace Aemulus_XR_Reporting_App
+namespace AemulusConnect
 {
 	public partial class loadingUserControl : UserControl
 	{

@@ -5,7 +5,7 @@
 Your project now has a complete WiX installer solution with PowerShell automation:
 
 ### ✅ Installer Configuration
-- **[installer/AemulusXRReporting.wxs](installer/AemulusXRReporting.wxs)** - WiX installer definition
+- **[installer/AemulusConnect.wxs](installer/AemulusConnect.wxs)** - WiX installer definition
   - Pre-configured for your application
   - UpgradeCode GUID already set: `8b7c49af-4352-4886-a835-dd52f7b44131`
   - Version 1.0.0.0
@@ -57,7 +57,7 @@ cd tools
 .\build_and_package.ps1 -Clean
 ```
 
-Your installer will be created at: `output\AemulusXRReporting.msi`
+Your installer will be created at: `output\AemulusConnect.msi`
 
 ## PowerShell Script Features
 
@@ -102,7 +102,7 @@ Your installer will be created at: `output\AemulusXRReporting.msi`
 
 Your MSI installer will:
 - ✅ Check for .NET 8 Desktop Runtime (warn if missing)
-- ✅ Install to `C:\Program Files\Aemulus XR\Aemulus XR Reporting\`
+- ✅ Install to `C:\Program Files\Aemulus XR\AemulusConnect\`
 - ✅ Create Start Menu shortcuts
 - ✅ Optionally create Desktop shortcut
 - ✅ Include ADB platform tools
@@ -128,7 +128,7 @@ cd tools
 
 ### Release Build
 ```powershell
-# 1. Update version in installer\AemulusXRReporting.wxs
+# 1. Update version in installer\AemulusConnect.wxs
 # 2. Build
 cd tools
 .\build_and_package.ps1 -Clean
@@ -177,7 +177,7 @@ Run with verbose output:
 
 To create a new version:
 
-1. Edit `installer\AemulusXRReporting.wxs` line 9:
+1. Edit `installer\AemulusConnect.wxs` line 9:
    ```xml
    <?define ProductVersion = "1.0.1.0" ?>
    ```
@@ -204,17 +204,17 @@ The PowerShell scripts provide:
 
 1. **Verify Prerequisites**: `.\verify_prerequisites.ps1`
 2. **Build First Installer**: `.\build_and_package.ps1 -Clean`
-3. **Test Installation**: Double-click `output\AemulusXRReporting.msi`
+3. **Test Installation**: Double-click `output\AemulusConnect.msi`
 4. **Read Full Docs**: See [installer/README.md](installer/README.md)
 
 ## File Locations
 
 ```
-AMXR_Report/
+AemulusConnect/
 ├── BUILD.md                           ← Quick build reference
 ├── INSTALLER_SETUP_SUMMARY.md         ← This file
 ├── installer/
-│   ├── AemulusXRReporting.wxs         ← WiX installer config
+│   ├── AemulusConnect.wxs         ← WiX installer config
 │   ├── README.md                      ← Full installer docs
 │   └── SETUP_GUIDE.md                 ← Setup walkthrough
 ├── tools/
@@ -222,7 +222,7 @@ AMXR_Report/
 │   ├── verify_prerequisites.ps1       ← Environment checker
 │   └── README.md                      ← Tools reference
 └── output/
-    └── AemulusXRReporting.msi         ← Generated installer
+    └── AemulusConnect.msi         ← Generated installer
 ```
 
 ## Support Resources

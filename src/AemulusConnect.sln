@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.11.35431.28
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Aemulus XR Reporting App", "Aemulus XR Reporting App.csproj", "{614C483A-EE56-4F8F-96FA-07BBE460DB56}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AemulusConnect", "AemulusConnect.csproj", "{614C483A-EE56-4F8F-96FA-07BBE460DB56}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

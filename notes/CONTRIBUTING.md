@@ -1,6 +1,6 @@
-# Contributing to AMXR_Report
+# Contributing to AemulusConnect
 
-First off, thank you for considering contributing to AMXR_Report! It's people like you that make this template better for everyone.
+First off, thank you for considering contributing to AemulusConnect! It's people like you that make this template better for everyone.
 
 ## Code of Conduct
 
@@ -78,7 +78,7 @@ feat!: change template initialization workflow
 ## Project Structure
 
 ```
-AMXR_Report/
+AemulusConnect/
 ├── .github/
 │   ├── gitignore-templates/  # Example .gitignore files
 │   ├── ISSUE_TEMPLATE/       # Issue templates
