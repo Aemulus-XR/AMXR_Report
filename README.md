@@ -1,9 +1,8 @@
 # AemulusConnect [![starline](https://starlines.qoo.monster/assets/Aemulus-XR/AemulusConnect)](https://github.com/qoomon/starline)
-<div align="center">
 
 <div align="center">
 
-<img src="assets/media/logo.jpg" alt="AemulusConnect Logo" width="200" height="auto" />
+<img src="assets/media/logo.jpg" alt="AemulusConnect Logo" width="auto" height="auto" />
 
 ### Seamlessly transfer XR reports from your Oculus Quest to your Windows PC
 
