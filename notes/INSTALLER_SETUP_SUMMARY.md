@@ -111,10 +111,10 @@ Your MSI installer will:
 
 ## Build Types Comparison
 
-| Type | Command | Size | .NET Required | Best For |
-|------|---------|------|---------------|----------|
-| **Framework-Dependent** | `.\build_and_package.ps1` | ~5-10 MB | Yes | Enterprise, dev testing |
-| **Self-Contained** | `.\build_and_package.ps1 -SelfContained` | ~100+ MB | No | Public distribution |
+| Type                    | Command                                  | Size     | .NET Required | Best For                |
+| ----------------------- | ---------------------------------------- | -------- | ------------- | ----------------------- |
+| **Framework-Dependent** | `.\build_and_package.ps1`                | ~5-10 MB | Yes           | Enterprise, dev testing |
+| **Self-Contained**      | `.\build_and_package.ps1 -SelfContained` | ~100+ MB | No            | Public distribution     |
 
 ## Common Workflows
 

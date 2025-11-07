@@ -57,7 +57,7 @@
 > - [ ] Choose and apply a `.gitignore` from `.github/gitignore-templates/` (see [gitignore templates](.github/gitignore-templates/))
 > - [ ] Update the version in `.release-please-manifest.json` to your starting version (e.g., "0.1.0")
 > - [ ] Fill in the Features, Installation, and Usage sections below
-> - [ ] Review and update the [Code of Conduct](CODE_OF_CONDUCT.md) contact information
+> - [ ] Review and update the [Code of Conduct](notes/CODE_OF_CONDUCT.md) contact information
 > - [ ] Enable GitHub Pages in repository settings if you want a project website
 > - [ ] Remove or update this checklist section
 
