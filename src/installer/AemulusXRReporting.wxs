@@ -53,15 +53,17 @@
       <DirectorySearch Id="SearchDotNetDesktop" Path="C:\Program Files\dotnet\shared\Microsoft.WindowsDesktop.App" />
     </Property>
 
-    <!-- Custom action to open User Manual -->
-    <Property Id="WIXUI_EXITDIALOGOPTIONALCHECKBOXTEXT" Value="Open User Manual" />
+    <!-- Custom action for finish dialog -->
+    <Property Id="WIXUI_EXITDIALOGOPTIONALCHECKBOXTEXT" Value="Launch Aemulus XR Reporting" />
+
+    <!-- Launch application -->
     <CustomAction
-      Id="OpenUserManual"
-      Directory="INSTALLFOLDER"
-      ExeCommand="[SystemFolder]cmd.exe /c start &quot;&quot; &quot;[DOCUMENTATIONFOLDER]UserManual.pdf&quot;"
+      Id="LaunchApplication"
+      Directory="BINFOLDER"
+      ExeCommand="[BINFOLDER]Aemulus XR Reporting App.exe"
       Execute="immediate"
       Impersonate="yes"
-      Return="ignore" />
+      Return="asyncNoWait" />
 
     <!-- Installation directory structure -->
     <StandardDirectory Id="ProgramFiles6432Folder">
@@ -232,8 +234,8 @@
     <!-- Custom Installer UI using WiX 4 pattern -->
     <UI>
       <ui:WixUI Id="WixUI_FeatureTree" />
-      <!-- Add checkbox to open manual on exit dialog -->
-      <Publish Dialog="ExitDialog" Control="Finish" Event="DoAction" Value="OpenUserManual" Condition="WIXUI_EXITDIALOGOPTIONALCHECKBOX = 1 and NOT Installed" />
+      <!-- Launch app when checkbox is checked -->
+      <Publish Dialog="ExitDialog" Control="Finish" Event="DoAction" Value="LaunchApplication" Condition="WIXUI_EXITDIALOGOPTIONALCHECKBOX = 1 and NOT Installed" />
     </UI>
 
   </Package>
