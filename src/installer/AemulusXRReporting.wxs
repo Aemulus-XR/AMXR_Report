@@ -231,6 +231,13 @@
     <!-- License file -->
     <WixVariable Id="WixUILicenseRtf" Value="license.rtf" />
 
+    <!-- Custom branding images (optional - comment out if images don't exist) -->
+    <!-- Banner: 493x58 pixels, shown at top of most dialogs -->
+    <!-- <WixVariable Id="WixUIBannerBmp" Value="banner.bmp" /> -->
+
+    <!-- Dialog: 493x312 pixels, shown on Welcome and Exit dialogs -->
+    <!-- <WixVariable Id="WixUIDialogBmp" Value="dialog.bmp" /> -->
+
     <!-- Custom Installer UI using WiX 4 pattern -->
     <UI>
       <ui:WixUI Id="WixUI_FeatureTree" />
