@@ -192,11 +192,11 @@
       <ComponentGroupRef Id="DesktopShortcuts" />
     </Feature>
 
-    <!-- Custom UI (optional - uses WixUI built-in dialogs) -->
-    <!-- Uncomment to add a custom installation UI -->
+    <!-- Custom Installer UI -->
+    <!-- Note: WiX 4 UI extension has compatibility issues. Using default Windows Installer UI for now. -->
+    <!-- Future: Add custom UI dialogs or wait for WiX 4 UI improvements -->
     <!--
-    <UIRef Id="WixUI_InstallDir" />
-    <Property Id="WIXUI_INSTALLDIR" Value="INSTALLFOLDER" />
+    <UIRef Id="WixUI_Minimal" />
     -->
 
   </Package>

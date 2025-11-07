@@ -204,7 +204,8 @@ if ($Clean) {
     }
 
     Write-Success "Clean completed"
-} else {
+}
+else {
     Write-Info "Skipping clean (use -Clean to clean build artifacts)"
 }
 
@@ -238,7 +239,8 @@ if (-not $SkipBuild) {
         Write-Host $_.Exception.Message -ForegroundColor Red
         exit 1
     }
-} else {
+}
+else {
     Write-Step "Skipping NuGet restore..." 3 7
     Write-Info "Build step skipped as requested"
 }
@@ -267,7 +269,8 @@ if (-not $SkipBuild) {
 
         if (-not $VerboseOutput) {
             $buildArgs += "--verbosity", "minimal"
-        } else {
+        }
+        else {
             $buildArgs += "--verbosity", "detailed"
         }
 
@@ -284,7 +287,8 @@ if (-not $SkipBuild) {
         Write-Host $_.Exception.Message -ForegroundColor Red
         exit 1
     }
-} else {
+}
+else {
     Write-Step "Skipping build..." 4 7
     Write-Info "Using existing build artifacts"
 }
@@ -298,7 +302,8 @@ Write-Step "Preparing output directory..." 5 7
 if (-not (Test-Path $OutputDir)) {
     New-Item -ItemType Directory -Path $OutputDir -Force | Out-Null
     Write-Success "Output directory created"
-} else {
+}
+else {
     Write-Info "Output directory exists"
 }
 
@@ -317,7 +322,8 @@ Write-Step "Creating Shipping folder..." 6 7
 # Determine the correct build output path
 if ($SelfContained) {
     $BuildOutputPath = Join-Path $SrcDir "bin\$BuildConfig\$TargetFramework\$RuntimeIdentifier"
-} else {
+}
+else {
     $BuildOutputPath = Join-Path $SrcDir "bin\$BuildConfig\$TargetFramework"
 }
 
@@ -346,7 +352,8 @@ foreach ($file in $mainFiles) {
     $sourcePath = Join-Path $BuildOutputPath $file
     if (Test-Path $sourcePath) {
         Copy-Item -Path $sourcePath -Destination $ShippingDir -Force
-    } else {
+    }
+    else {
         Write-Warning "File not found: $file"
     }
 }
@@ -362,7 +369,8 @@ foreach ($file in $platformToolsFiles) {
     $sourcePath = Join-Path $sourcePlatformTools $file
     if (Test-Path $sourcePath) {
         Copy-Item -Path $sourcePath -Destination $ShippingPlatformTools -Force
-    } else {
+    }
+    else {
         Write-Warning "Platform tool not found: $file"
     }
 }
@@ -380,7 +388,8 @@ try {
     # Determine the correct build output path
     if ($SelfContained) {
         $BuildOutputPath = Join-Path $SrcDir "bin\$BuildConfig\$TargetFramework\$RuntimeIdentifier"
-    } else {
+    }
+    else {
         $BuildOutputPath = Join-Path $SrcDir "bin\$BuildConfig\$TargetFramework"
     }
 
@@ -443,7 +452,8 @@ Write-Host $OutputMsi -ForegroundColor Cyan
 Write-Host "  Build type:      " -NoNewline
 if ($SelfContained) {
     Write-Host "Self-contained (includes .NET runtime)" -ForegroundColor Cyan
-} else {
+}
+else {
     Write-Host "Framework-dependent (requires .NET 8)" -ForegroundColor Cyan
 }
 
@@ -461,6 +471,7 @@ Write-Host ""
 
 #region Open Output Folder
 
+<#
 if (Test-Path $OutputMsi) {
     Write-Host "Opening output folder..." -ForegroundColor Gray
 
@@ -477,6 +488,7 @@ if (Test-Path $OutputMsi) {
         }
     }
 }
+#>
 
 #endregion
 
