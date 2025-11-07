@@ -118,7 +118,7 @@ See our [Contributing Guide](notes/CONTRIBUTING.md) for detailed instructions.
 
 ## Project Status
 
-**Current Version**: 1.4.0
+**Current Version**: 2.0.0
 **Status**: Active Development
 **Branch**: `main` (stable, deployed)
 

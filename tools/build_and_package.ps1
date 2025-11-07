@@ -140,7 +140,7 @@ Write-Host ""
 
 #region Step 1: Check Prerequisites
 
-Write-Step "Checking prerequisites..." 1 8
+Write-Step "Checking prerequisites..." 1 9
 
 # Check .NET SDK
 if (-not (Test-CommandExists "dotnet")) {
@@ -179,9 +179,39 @@ Write-Success "WiX source file found"
 
 #endregion
 
-#region Step 2: Clean Build (Optional)
+#region Step 2: Update Version Numbers
 
-Write-Step "Build preparation..." 2 8
+Write-Step "Updating version numbers..." 2 9
+
+$updateVersionScript = Join-Path $PSScriptRoot "update_version.ps1"
+if (Test-Path $updateVersionScript) {
+    try {
+        $versionArgs = @()
+        if ($VerboseOutput) {
+            $versionArgs += "-VerboseOutput"
+        }
+
+        & $updateVersionScript @versionArgs
+
+        if ($LASTEXITCODE -ne 0) {
+            Write-Warning "Version update script failed, continuing anyway..."
+        } else {
+            Write-Success "Version numbers updated"
+        }
+    }
+    catch {
+        Write-Warning "Failed to run version update script: $($_.Exception.Message)"
+        Write-Info "Continuing with build..."
+    }
+} else {
+    Write-Warning "Version update script not found, skipping..."
+}
+
+#endregion
+
+#region Step 3: Clean Build (Optional)
+
+Write-Step "Build preparation..." 3 9
 
 if ($Clean) {
     Write-Info "Cleaning previous builds..."
@@ -211,10 +241,10 @@ else {
 
 #endregion
 
-#region Step 3: Restore NuGet Packages
+#region Step 4: Restore NuGet Packages
 
 if (-not $SkipBuild) {
-    Write-Step "Restoring NuGet packages..." 3 7
+    Write-Step "Restoring NuGet packages..." 4 9
 
     try {
         $restoreArgs = @(
@@ -241,16 +271,16 @@ if (-not $SkipBuild) {
     }
 }
 else {
-    Write-Step "Skipping NuGet restore..." 3 8
+    Write-Step "Skipping NuGet restore..." 4 9
     Write-Info "Build step skipped as requested"
 }
 
 #endregion
 
-#region Step 4: Build Application
+#region Step 5: Build Application
 
 if (-not $SkipBuild) {
-    Write-Step "Building application..." 4 8
+    Write-Step "Building application..." 5 9
 
     try {
         $buildType = if ($SelfContained) { "self-contained (includes .NET runtime)" } else { "framework-dependent (requires .NET 8)" }
@@ -289,7 +319,7 @@ if (-not $SkipBuild) {
     }
 }
 else {
-    Write-Step "Skipping build..." 4 8
+    Write-Step "Skipping build..." 5 9
     Write-Info "Using existing build artifacts"
 }
 
@@ -297,7 +327,7 @@ else {
 
 #region Step 5: Create Output Directory
 
-Write-Step "Preparing output directory..." 5 8
+Write-Step "Preparing output directory..." 6 9
 
 if (-not (Test-Path $OutputDir)) {
     New-Item -ItemType Directory -Path $OutputDir -Force | Out-Null
@@ -315,9 +345,9 @@ if (Test-Path $OutputMsi) {
 
 #endregion
 
-#region Step 6: Create Shipping Folder
+#region Step 7: Create Shipping Folder
 
-Write-Step "Creating Shipping folder..." 6 8
+Write-Step "Creating Shipping folder..." 7 9
 
 # Determine the correct build output path
 if ($SelfContained) {
@@ -380,9 +410,9 @@ Write-Info "Location: $ShippingDir"
 
 #endregion
 
-#region Step 7: Convert Documentation
+#region Step 8: Convert Documentation
 
-Write-Step "Converting documentation..." 7 8
+Write-Step "Converting documentation..." 8 9
 
 try {
     $ConvertDocsScript = Join-Path $PSScriptRoot "convert_docs.ps1"
@@ -409,9 +439,9 @@ catch {
 
 #endregion
 
-#region Step 8: Build WiX Installer
+#region Step 9: Build WiX Installer
 
-Write-Step "Building WiX installer..." 8 8
+Write-Step "Building WiX installer..." 9 9
 
 try {
     # Determine the correct build output path
@@ -477,6 +507,21 @@ try {
     }
 
     Write-Success "Installer created successfully"
+
+    # Rename MSI with version number
+    $versionFile = Join-Path (Split-Path -Parent $ScriptRoot) "notes\VERSION.md"
+    if (Test-Path $versionFile) {
+        $versionContent = Get-Content $versionFile -Raw
+        if ($versionContent -match 'version=(\d+\.\d+\.\d+)') {
+            $version = $matches[1]
+            $versionedMsi = Join-Path $OutputDir "AemulusConnect-$version.msi"
+
+            if (Test-Path $OutputMsi) {
+                Copy-Item $OutputMsi $versionedMsi -Force
+                Write-Info "Created versioned installer: AemulusConnect-$version.msi"
+            }
+        }
+    }
 }
 catch {
     Write-Error "ERROR: WiX installer build failed"
