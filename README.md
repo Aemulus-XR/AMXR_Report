@@ -4,7 +4,7 @@
 
 <img src="assets/media/logo.jpg" alt="AemulusConnect Logo" width="auto" height="auto" />
 
-### Seamlessly transfer XR reports from your Oculus Quest to your Windows PC
+### Seamlessly transfer Aemulus XR reports from your Oculus Quest to your Windows PC
 
 [![Contributors](https://img.shields.io/github/contributors/Aemulus-XR/AemulusConnect)](https://github.com/Aemulus-XR/AemulusConnect/graphs/contributors)
 [![Last Commit](https://img.shields.io/github/last-commit/Aemulus-XR/AemulusConnect)](https://github.com/Aemulus-XR/AemulusConnect/commits/main)
