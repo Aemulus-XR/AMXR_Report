@@ -43,7 +43,7 @@ Before using AemulusConnect, you need to enable USB debugging on your Quest devi
 ## Using AemulusConnect
 
 ### Basic Workflow
-![](04_Extras/assets/media/Pasted%20image%2020251107144653.png)
+![](../assets/media/Pasted%20image%2020251107084934.png)
 
 1. **Connect Your Quest**
    - Plug your Quest device into your PC using a USB cable
@@ -64,14 +64,14 @@ Before using AemulusConnect, you need to enable USB debugging on your Quest devi
 ### Application States
 
 **Setup Screen (No Device Detected)**
-![](assets/media/Pasted%20image%2020251107084951.png)
+![](../assets/media/Pasted%20image%2020251107084951.png)
 
 - Shows connection instructions
 - Guides you through USB debugging setup
 - Automatically disappears when Quest is detected
 
 **Ready Screen (Device Connected)**
-![](assets/media/Pasted%20image%2020251107085147.png)
+![](../assets/media/Pasted%20image%2020251107085147.png)
 
 - Shows the AemulusConnect logo
 - Displays "Fetch Reports" button
@@ -79,7 +79,7 @@ Before using AemulusConnect, you need to enable USB debugging on your Quest devi
 
 **Transfer Screen (Downloading)**
 
-![](assets/media/Pasted%20image%2020251107085159.png)
+![](../assets/media/Pasted%20image%2020251107085159.png)
 
 - Displays progress bar
 - Shows current status:
@@ -90,7 +90,7 @@ Before using AemulusConnect, you need to enable USB debugging on your Quest devi
 
 **Default Screen (Fetch/View)**
 
-![](04_Extras/assets/media/Pasted%20image%2020251107145006.png)
+![](../assets/media/Pasted%20image%2020251107085211.png)
 - Once reports have been fetched, show number of reports found at bottom of page, and make visible the 2nd button, "View Reports"
 
 ## File Organization
