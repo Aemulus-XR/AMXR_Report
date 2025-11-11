@@ -39,7 +39,7 @@ namespace AemulusConnect.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Aemulus_XR_Reporting_App.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("AemulusConnect.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -57,6 +57,339 @@ namespace AemulusConnect.Properties {
             }
             set {
                 resourceCulture = value;
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to AemulusXR Report.
+        /// </summary>
+        internal static string Common_AppTitle {
+            get {
+                return ResourceManager.GetString("Common_AppTitle", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Select local output folder.
+        /// </summary>
+        internal static string Common_FolderBrowserDescription {
+            get {
+                return ResourceManager.GetString("Common_FolderBrowserDescription", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to AemulusXR Report.
+        /// </summary>
+        internal static string MainForm_Title {
+            get {
+                return ResourceManager.GetString("MainForm_Title", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to AemulusConnect v{0}.
+        /// </summary>
+        internal static string MainForm_WindowTitleWithVersion {
+            get {
+                return ResourceManager.GetString("MainForm_WindowTitleWithVersion", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Version {0}.
+        /// </summary>
+        internal static string MainForm_VersionLabel {
+            get {
+                return ResourceManager.GetString("MainForm_VersionLabel", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Version.
+        /// </summary>
+        internal static string MainForm_VersionPrefix {
+            get {
+                return ResourceManager.GetString("MainForm_VersionPrefix", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to An error was encountered running the program. The information is as follows:.
+        /// </summary>
+        internal static string Error_GenericMessage {
+            get {
+                return ResourceManager.GetString("Error_GenericMessage", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Would you like to try again?.
+        /// </summary>
+        internal static string Error_RetryDialogTitle {
+            get {
+                return ResourceManager.GetString("Error_RetryDialogTitle", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to AemulusXR Report.
+        /// </summary>
+        internal static string Connected_StatusLabel {
+            get {
+                return ResourceManager.GetString("Connected_StatusLabel", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to {0} Report fetched.
+        /// </summary>
+        internal static string Connected_ReportCountSingular {
+            get {
+                return ResourceManager.GetString("Connected_ReportCountSingular", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to {0} Reports fetched.
+        /// </summary>
+        internal static string Connected_ReportCountPlural {
+            get {
+                return ResourceManager.GetString("Connected_ReportCountPlural", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Fetch Reports.
+        /// </summary>
+        internal static string Connected_FetchButton {
+            get {
+                return ResourceManager.GetString("Connected_FetchButton", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to View Reports.
+        /// </summary>
+        internal static string Connected_ViewButton {
+            get {
+                return ResourceManager.GetString("Connected_ViewButton", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Settings.
+        /// </summary>
+        internal static string Connected_SettingsButton {
+            get {
+                return ResourceManager.GetString("Connected_SettingsButton", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to 1.
+        /// </summary>
+        internal static string Disconnected_StepNumber1 {
+            get {
+                return ResourceManager.GetString("Disconnected_StepNumber1", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to 2.
+        /// </summary>
+        internal static string Disconnected_StepNumber2 {
+            get {
+                return ResourceManager.GetString("Disconnected_StepNumber2", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Make sure the quest device is plugged into the PC with a USB-C cable.
+        /// </summary>
+        internal static string Disconnected_Instruction1 {
+            get {
+                return ResourceManager.GetString("Disconnected_Instruction1", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Check in-headset for a prompt to trust the PC - check the always allow this computer and click OK.
+        /// </summary>
+        internal static string Disconnected_Instruction2 {
+            get {
+                return ResourceManager.GetString("Disconnected_Instruction2", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to AemulusXR Report.
+        /// </summary>
+        internal static string Loading_StatusLabel {
+            get {
+                return ResourceManager.GetString("Loading_StatusLabel", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to No Reports Found.
+        /// </summary>
+        internal static string Loading_StatusNoReports {
+            get {
+                return ResourceManager.GetString("Loading_StatusNoReports", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Downloading to PC.
+        /// </summary>
+        internal static string Loading_StatusDownloading {
+            get {
+                return ResourceManager.GetString("Loading_StatusDownloading", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Downloading Complete.
+        /// </summary>
+        internal static string Loading_StatusComplete {
+            get {
+                return ResourceManager.GetString("Loading_StatusComplete", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Downloading Failed.
+        /// </summary>
+        internal static string Loading_StatusFailed {
+            get {
+                return ResourceManager.GetString("Loading_StatusFailed", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Settings.
+        /// </summary>
+        internal static string Settings_WindowTitle {
+            get {
+                return ResourceManager.GetString("Settings_WindowTitle", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Reports remote path:.
+        /// </summary>
+        internal static string Settings_ReportsPathLabel {
+            get {
+                return ResourceManager.GetString("Settings_ReportsPathLabel", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Archive remote path:.
+        /// </summary>
+        internal static string Settings_ArchivePathLabel {
+            get {
+                return ResourceManager.GetString("Settings_ArchivePathLabel", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Local output folder:.
+        /// </summary>
+        internal static string Settings_OutputPathLabel {
+            get {
+                return ResourceManager.GetString("Settings_OutputPathLabel", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Language:.
+        /// </summary>
+        internal static string Settings_LanguageLabel {
+            get {
+                return ResourceManager.GetString("Settings_LanguageLabel", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Browse....
+        /// </summary>
+        internal static string Settings_BrowseButton {
+            get {
+                return ResourceManager.GetString("Settings_BrowseButton", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Save.
+        /// </summary>
+        internal static string Settings_SaveButton {
+            get {
+                return ResourceManager.GetString("Settings_SaveButton", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Cancel.
+        /// </summary>
+        internal static string Settings_CancelButton {
+            get {
+                return ResourceManager.GetString("Settings_CancelButton", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Select local output folder.
+        /// </summary>
+        internal static string Settings_FolderBrowserDescription {
+            get {
+                return ResourceManager.GetString("Settings_FolderBrowserDescription", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Language will change after restarting the application..
+        /// </summary>
+        internal static string Settings_RestartMessage {
+            get {
+                return ResourceManager.GetString("Settings_RestartMessage", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Restart Required.
+        /// </summary>
+        internal static string Settings_RestartTitle {
+            get {
+                return ResourceManager.GetString("Settings_RestartTitle", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to &amp;File.
+        /// </summary>
+        internal static string Menu_File {
+            get {
+                return ResourceManager.GetString("Menu_File", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to &amp;Settings....
+        /// </summary>
+        internal static string Menu_Settings {
+            get {
+                return ResourceManager.GetString("Menu_Settings", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to E&amp;xit.
+        /// </summary>
+        internal static string Menu_Exit {
+            get {
+                return ResourceManager.GetString("Menu_Exit", resourceCulture);
             }
         }
     }

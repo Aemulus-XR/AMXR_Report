@@ -7,7 +7,7 @@
 
   <ItemGroup>
     <None Include="license.rtf" />
-    <None Include="UserManual.pdf" />
+    <None Include="UserGuide.pdf" />
   </ItemGroup>
 
   <ItemGroup>

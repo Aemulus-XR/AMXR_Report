@@ -414,5 +414,6 @@ src/Shipping/
 example_wix_installer_code/**
 .obsidian/
 *.dead
-src/installer/UserManual.pdf
+src/installer/UserGuide.pdf
 tools/sound.ps1
+notes/dev/

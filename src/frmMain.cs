@@ -24,8 +24,8 @@ namespace AemulusConnect
 			InitializeComponent();
 			versionParts = fullVersion.Split('+');
 			version = versionParts[0];
-			lblVersion.Text = "Version " + version;
-			Text = $"AemulusConnect v{version}";
+			lblVersion.Text = string.Format(Properties.Resources.MainForm_VersionLabel, version);
+			Text = string.Format(Properties.Resources.MainForm_WindowTitleWithVersion, version);
 			_logger.Info($"AemulusConnect version {version} initialized at {DateTime.Now.ToString()}");
 			_logger.Info($"Operating System: {os}");
 
@@ -80,8 +80,8 @@ namespace AemulusConnect
 
 		private void questHelper_OnError(Exception e)
 		{
-			string message = "An error was encountered running the program. The information is as follows:";
-			var result = MessageBox.Show($"{message} {e.Message}", "Would you like to try again?", MessageBoxButtons.YesNo);
+			string message = Properties.Resources.Error_GenericMessage;
+			var result = MessageBox.Show($"{message} {e.Message}", Properties.Resources.Error_RetryDialogTitle, MessageBoxButtons.YesNo);
 
 			if (result == DialogResult.Yes)
 				_questHelper.InitializeADBServer();
@@ -140,6 +140,22 @@ namespace AemulusConnect
 			}
 
 			_loadingUserControl.setDownloadStatus(downloadStatus);
+		}
+
+		private void settingsToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			var settingsForm = new SettingsForm(
+				FSStrings.ReportsLocation,
+				FSStrings.ArchiveLocation,
+				FSStrings.OutputLocation,
+				(r, a, o) => UpdateQuestHelperPaths(r, a, o)
+			);
+			settingsForm.ShowDialog(this);
+		}
+
+		private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			Application.Exit();
 		}
 	}
 }

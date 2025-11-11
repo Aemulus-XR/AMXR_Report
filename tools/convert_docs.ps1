@@ -3,7 +3,7 @@
 .SYNOPSIS
     Converts documentation files for the installer
 .DESCRIPTION
-    Converts LICENSE.md to RTF and USER_README.md to PDF for inclusion in the installer
+    Converts LICENSE.md to RTF and USER_GUIDE.md to PDF for inclusion in the installer
 .PARAMETER SkipPdf
     Skip PDF generation (useful if wkhtmltopdf is not installed)
 #>
@@ -96,11 +96,11 @@ function Get-WkhtmltopdfPath {
 
 $ScriptRoot = Split-Path -Parent $PSScriptRoot
 $LicenseMd = Join-Path $ScriptRoot "notes/LICENSE.md"
-$UserReadmeMd = Join-Path $ScriptRoot "notes\USER_README.md"
+$UserReadmeMd = Join-Path $ScriptRoot "notes\USER_GUIDE.md"
 $MediaScriptRoot = Join-Path $ScriptRoot "assets\media"
 $InstallerDir = Join-Path $ScriptRoot "src\installer"
 $LicenseRtf = Join-Path $InstallerDir "license.rtf"
-$UserManualPdf = Join-Path $InstallerDir "UserManual.pdf"
+$UserGuidePdf = Join-Path $InstallerDir "UserGuide.pdf"
 
 #endregion
 
@@ -184,13 +184,13 @@ if ($useFallback) {
 
 #endregion
 
-#region Convert USER_README.md to PDF
+#region Convert USER_GUIDE.md to PDF
 
 if (-not $SkipPdf) {
-    Write-Step "Converting USER_README.md to PDF..."
+    Write-Step "Converting USER_GUIDE.md to PDF..."
 
     if (-not (Test-Path $UserReadmeMd)) {
-        Write-Error "USER_README.md not found at: $UserReadmeMd"
+        Write-Error "USER_GUIDE.md not found at: $UserReadmeMd"
         Write-Info "Skipping PDF generation"
     }
     else {
@@ -211,8 +211,8 @@ if (-not $SkipPdf) {
                 $UserReadmeDir = Split-Path -Parent $UserReadmeMd
                 $pdfArgs = @(
                     $UserReadmeMd,
-                    "-o", $UserManualPdf,
-                    "--metadata", "title=AemulusConnect - User Manual",
+                    "-o", $UserGuidePdf,
+                    "--metadata", "title=AemulusConnect - User Guide",
                     "--resource-path=$UserReadmeDir, $MediaScriptRoot"
                 )
 
@@ -222,8 +222,8 @@ if (-not $SkipPdf) {
 
                 & $pandocPath @pdfArgs 2>&1 | Out-Null
 
-                if ($LASTEXITCODE -eq 0 -and (Test-Path $UserManualPdf)) {
-                    Write-Success "User Manual PDF created: $UserManualPdf"
+                if ($LASTEXITCODE -eq 0 -and (Test-Path $UserGuidePdf)) {
+                    Write-Success "User Guide PDF created: $UserGuidePdf"
                 }
                 else {
                     throw "Pandoc PDF conversion failed"
@@ -240,10 +240,10 @@ if (-not $SkipPdf) {
                 foreach ($engine in $engines) {
                     try {
                         $UserReadmeDir = Split-Path -Parent $UserReadmeMd
-                        & $pandocPath $UserReadmeMd -o $UserManualPdf --metadata title="AemulusConnect - User Manual" --resource-path="$UserReadmeDir, $MediaScriptRoot" --pdf-engine=$engine 2>&1 | Out-Null
+                        & $pandocPath $UserReadmeMd -o $UserGuidePdf --metadata title="AemulusConnect - User Guide" --resource-path="$UserReadmeDir, $MediaScriptRoot" --pdf-engine=$engine 2>&1 | Out-Null
 
-                        if ($LASTEXITCODE -eq 0 -and (Test-Path $UserManualPdf)) {
-                            Write-Success "User Manual PDF created using $engine`: $UserManualPdf"
+                        if ($LASTEXITCODE -eq 0 -and (Test-Path $UserGuidePdf)) {
+                            Write-Success "User Guide PDF created using $engine`: $UserGuidePdf"
                             $success = $true
                             break
                         }
