@@ -47,8 +47,10 @@ namespace AemulusConnect.Helpers
             {
                 new CultureOption("en-US", "English"),
                 new CultureOption("fr-FR", "Français (French)"),
-                // Arabic will be added in Phase 4
-                // new CultureOption("ar-SA", "العربية (Arabic)"),
+                new CultureOption("es-ES", "Español (Spanish)"),
+                new CultureOption("de-DE", "Deutsch (German)"),
+                new CultureOption("ar-SA", "العربية (Arabic)"),
+                new CultureOption("en-PI", "Ahoy Tharr (Pirate)"),
             };
         }
 
