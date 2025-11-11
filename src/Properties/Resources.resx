@@ -117,4 +117,154 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+
+  <!-- Common/Shared Strings -->
+  <data name="Common_AppTitle" xml:space="preserve">
+    <value>AemulusXR Report</value>
+    <comment>Application title used throughout the UI</comment>
+  </data>
+  <data name="Common_FolderBrowserDescription" xml:space="preserve">
+    <value>Select local output folder</value>
+    <comment>Description shown in folder browser dialog</comment>
+  </data>
+
+  <!-- Main Form -->
+  <data name="MainForm_Title" xml:space="preserve">
+    <value>AemulusXR Report</value>
+    <comment>Main window title bar (static in Designer)</comment>
+  </data>
+  <data name="MainForm_WindowTitleWithVersion" xml:space="preserve">
+    <value>AemulusConnect v{0}</value>
+    <comment>Main window title with version number. {0} = version string</comment>
+  </data>
+  <data name="MainForm_VersionLabel" xml:space="preserve">
+    <value>Version {0}</value>
+    <comment>Version label text. {0} = version string</comment>
+  </data>
+  <data name="MainForm_VersionPrefix" xml:space="preserve">
+    <value>Version</value>
+    <comment>Static version label prefix</comment>
+  </data>
+
+  <!-- Main Form - Error Messages -->
+  <data name="Error_GenericMessage" xml:space="preserve">
+    <value>An error was encountered running the program. The information is as follows:</value>
+    <comment>Generic error message shown in error dialog</comment>
+  </data>
+  <data name="Error_RetryDialogTitle" xml:space="preserve">
+    <value>Would you like to try again?</value>
+    <comment>Title for error retry dialog with Yes/No buttons</comment>
+  </data>
+
+  <!-- Connected User Control -->
+  <data name="Connected_StatusLabel" xml:space="preserve">
+    <value>AemulusXR Report</value>
+    <comment>Status label in connected state</comment>
+  </data>
+  <data name="Connected_ReportCountSingular" xml:space="preserve">
+    <value>{0} Report fetched</value>
+    <comment>Label showing count of reports (singular). {0} = number of reports</comment>
+  </data>
+  <data name="Connected_ReportCountPlural" xml:space="preserve">
+    <value>{0} Reports fetched</value>
+    <comment>Label showing count of reports (plural). {0} = number of reports</comment>
+  </data>
+  <data name="Connected_FetchButton" xml:space="preserve">
+    <value>Fetch Reports</value>
+    <comment>Button to download reports from Quest device</comment>
+  </data>
+  <data name="Connected_ViewButton" xml:space="preserve">
+    <value>View Reports</value>
+    <comment>Button to open file explorer to reports folder</comment>
+  </data>
+  <data name="Connected_SettingsButton" xml:space="preserve">
+    <value>Settings</value>
+    <comment>Button to open settings dialog</comment>
+  </data>
+
+  <!-- Disconnected User Control -->
+  <data name="Disconnected_StepNumber1" xml:space="preserve">
+    <value>1</value>
+    <comment>Step number for first instruction</comment>
+  </data>
+  <data name="Disconnected_StepNumber2" xml:space="preserve">
+    <value>2</value>
+    <comment>Step number for second instruction</comment>
+  </data>
+  <data name="Disconnected_Instruction1" xml:space="preserve">
+    <value>Make sure the quest device is plugged into the PC with a USB-C cable</value>
+    <comment>First setup instruction. USB-C is a technical term.</comment>
+  </data>
+  <data name="Disconnected_Instruction2" xml:space="preserve">
+    <value>Check in-headset for a prompt to trust the PC - check the always allow this computer and click OK</value>
+    <comment>Second setup instruction. "in-headset" refers to the VR headset display</comment>
+  </data>
+
+  <!-- Loading User Control -->
+  <data name="Loading_StatusLabel" xml:space="preserve">
+    <value>AemulusXR Report</value>
+    <comment>Status label in loading state</comment>
+  </data>
+  <data name="Loading_StatusNoReports" xml:space="preserve">
+    <value>No Reports Found</value>
+    <comment>Status when no reports exist on device</comment>
+  </data>
+  <data name="Loading_StatusDownloading" xml:space="preserve">
+    <value>Downloading to PC</value>
+    <comment>Status during active download</comment>
+  </data>
+  <data name="Loading_StatusComplete" xml:space="preserve">
+    <value>Downloading Complete</value>
+    <comment>Status when download finishes successfully</comment>
+  </data>
+  <data name="Loading_StatusFailed" xml:space="preserve">
+    <value>Downloading Failed</value>
+    <comment>Status when download encounters error (displayed in red/bold)</comment>
+  </data>
+
+  <!-- Settings Form -->
+  <data name="Settings_WindowTitle" xml:space="preserve">
+    <value>Settings</value>
+    <comment>Settings dialog window title</comment>
+  </data>
+  <data name="Settings_ReportsPathLabel" xml:space="preserve">
+    <value>Reports remote path:</value>
+    <comment>Label for reports path textbox. "Remote" = on the Quest device</comment>
+  </data>
+  <data name="Settings_ArchivePathLabel" xml:space="preserve">
+    <value>Archive remote path:</value>
+    <comment>Label for archive path textbox. "Remote" = on the Quest device</comment>
+  </data>
+  <data name="Settings_OutputPathLabel" xml:space="preserve">
+    <value>Local output folder:</value>
+    <comment>Label for output folder textbox. "Local" = on this PC</comment>
+  </data>
+  <data name="Settings_LanguageLabel" xml:space="preserve">
+    <value>Language:</value>
+    <comment>Label for language dropdown (to be added in Phase 1.4)</comment>
+  </data>
+  <data name="Settings_BrowseButton" xml:space="preserve">
+    <value>Browse...</value>
+    <comment>Button to open folder browser dialog</comment>
+  </data>
+  <data name="Settings_SaveButton" xml:space="preserve">
+    <value>Save</value>
+    <comment>Button to save settings and close dialog</comment>
+  </data>
+  <data name="Settings_CancelButton" xml:space="preserve">
+    <value>Cancel</value>
+    <comment>Button to close dialog without saving</comment>
+  </data>
+  <data name="Settings_FolderBrowserDescription" xml:space="preserve">
+    <value>Select local output folder</value>
+    <comment>Description shown in folder browser dialog</comment>
+  </data>
+  <data name="Settings_RestartMessage" xml:space="preserve">
+    <value>Language will change after restarting the application.</value>
+    <comment>MessageBox notification after language change</comment>
+  </data>
+  <data name="Settings_RestartTitle" xml:space="preserve">
+    <value>Restart Required</value>
+    <comment>MessageBox title for restart notification</comment>
+  </data>
 </root>
