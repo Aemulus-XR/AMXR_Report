@@ -125,7 +125,7 @@
     <ComponentGroup Id="DocumentationComponents" Directory="DOCUMENTATIONFOLDER">
       <Component Id="UserDocumentation" Guid="3cc6bcbf-51d9-4600-8e13-74bca12b9405">
         <!-- User Guide PDF -->
-        <File Id="UserManualPdf" Source="UserManual.pdf" Name="UserManual.pdf" KeyPath="yes" />
+        <File Id="UserGuidePdf" Source="UserGuide.pdf" Name="UserGuide.pdf" KeyPath="yes" />
 
         <!-- License RTF -->
         <File Id="LicenseRtf" Source="license.rtf" Name="License.rtf" />
@@ -145,10 +145,10 @@
 
         <!-- User Guide shortcut -->
         <Shortcut
-          Id="UserManualShortcut"
+          Id="UserGuideShortcut"
           Name="User Guide"
           Description="Open the AemulusConnect User Guide"
-          Target="[DOCUMENTATIONFOLDER]UserManual.pdf" />
+          Target="[DOCUMENTATIONFOLDER]UserGuide.pdf" />
 
         <!-- Uninstall shortcut -->
         <Shortcut

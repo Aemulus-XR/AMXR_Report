@@ -100,7 +100,7 @@ $UserReadmeMd = Join-Path $ScriptRoot "notes\USER_GUIDE.md"
 $MediaScriptRoot = Join-Path $ScriptRoot "assets\media"
 $InstallerDir = Join-Path $ScriptRoot "src\installer"
 $LicenseRtf = Join-Path $InstallerDir "license.rtf"
-$UserManualPdf = Join-Path $InstallerDir "UserManual.pdf"
+$UserGuidePdf = Join-Path $InstallerDir "UserGuide.pdf"
 
 #endregion
 
@@ -211,7 +211,7 @@ if (-not $SkipPdf) {
                 $UserReadmeDir = Split-Path -Parent $UserReadmeMd
                 $pdfArgs = @(
                     $UserReadmeMd,
-                    "-o", $UserManualPdf,
+                    "-o", $UserGuidePdf,
                     "--metadata", "title=AemulusConnect - User Guide",
                     "--resource-path=$UserReadmeDir, $MediaScriptRoot"
                 )
@@ -222,8 +222,8 @@ if (-not $SkipPdf) {
 
                 & $pandocPath @pdfArgs 2>&1 | Out-Null
 
-                if ($LASTEXITCODE -eq 0 -and (Test-Path $UserManualPdf)) {
-                    Write-Success "User Guide PDF created: $UserManualPdf"
+                if ($LASTEXITCODE -eq 0 -and (Test-Path $UserGuidePdf)) {
+                    Write-Success "User Guide PDF created: $UserGuidePdf"
                 }
                 else {
                     throw "Pandoc PDF conversion failed"
@@ -240,10 +240,10 @@ if (-not $SkipPdf) {
                 foreach ($engine in $engines) {
                     try {
                         $UserReadmeDir = Split-Path -Parent $UserReadmeMd
-                        & $pandocPath $UserReadmeMd -o $UserManualPdf --metadata title="AemulusConnect - User Guide" --resource-path="$UserReadmeDir, $MediaScriptRoot" --pdf-engine=$engine 2>&1 | Out-Null
+                        & $pandocPath $UserReadmeMd -o $UserGuidePdf --metadata title="AemulusConnect - User Guide" --resource-path="$UserReadmeDir, $MediaScriptRoot" --pdf-engine=$engine 2>&1 | Out-Null
 
-                        if ($LASTEXITCODE -eq 0 -and (Test-Path $UserManualPdf)) {
-                            Write-Success "User Guide PDF created using $engine`: $UserManualPdf"
+                        if ($LASTEXITCODE -eq 0 -and (Test-Path $UserGuidePdf)) {
+                            Write-Success "User Guide PDF created using $engine`: $UserGuidePdf"
                             $success = $true
                             break
                         }
