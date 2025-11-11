@@ -416,3 +416,4 @@ example_wix_installer_code/**
 *.dead
 src/installer/UserManual.pdf
 tools/sound.ps1
+notes/dev/
