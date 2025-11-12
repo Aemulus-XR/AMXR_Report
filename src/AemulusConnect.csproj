@@ -62,4 +62,29 @@
     <Folder Include="Resources\" />
   </ItemGroup>
 
+  <!-- Custom target to create satellite assembly for en-PIRATE culture -->
+  <Target Name="CreatePirateSatelliteAssembly" AfterTargets="CoreCompile">
+    <PropertyGroup>
+      <PirateResourceFile>$(IntermediateOutputPath)$(RootNamespace).Properties.Resources.en-PIRATE.resources</PirateResourceFile>
+      <PirateSatelliteDir>$(OutDir)en-PIRATE\</PirateSatelliteDir>
+      <PirateSatelliteDll>$(PirateSatelliteDir)$(AssemblyName).resources.dll</PirateSatelliteDll>
+      <WindowsSDKToolsPath>C:\Program Files (x86)\Microsoft SDKs\Windows\v10.0A\bin\NETFX 4.8 Tools\al.exe</WindowsSDKToolsPath>
+    </PropertyGroup>
+
+    <!-- Create the en-PIRATE directory -->
+    <MakeDir Directories="$(PirateSatelliteDir)" Condition="Exists('$(PirateResourceFile)')" />
+
+    <!-- Generate the satellite assembly using AL.exe from Windows SDK -->
+    <!-- NOTE: We use /culture:en (neutral English) instead of en-PIRATE because .NET doesn't recognize en-PIRATE as a valid culture -->
+    <Exec Command="powershell -Command &quot;&amp; '$(WindowsSDKToolsPath)' /t:lib /embed:'$(PirateResourceFile)',$(RootNamespace).Properties.Resources.en-PIRATE.resources /culture:en /out:'$(PirateSatelliteDll)'&quot;"
+          Condition="Exists('$(PirateResourceFile)') And Exists('$(WindowsSDKToolsPath)')"
+          IgnoreExitCode="false"
+          ContinueOnError="false" />
+
+    <!-- Informational message if satellite assembly was created -->
+    <Message Text="Created pirate language satellite assembly at $(PirateSatelliteDll)"
+             Condition="Exists('$(PirateSatelliteDll)')"
+             Importance="high" />
+  </Target>
+
 </Project>

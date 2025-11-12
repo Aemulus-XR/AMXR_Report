@@ -418,8 +418,8 @@ foreach ($file in $platformToolsFiles) {
     }
 }
 
-# Copy localization folders (e.g., 'fr', 'es-ES')
-$cultureFolders = Get-ChildItem -Path $BuildOutputPath -Directory | Where-Object { $_.Name -match '^[a-z]{2}(-[A-Z]{2})?$' }
+# Copy localization folders (e.g., 'fr', 'es-ES', 'en-PIRATE')
+$cultureFolders = Get-ChildItem -Path $BuildOutputPath -Directory | Where-Object { $_.Name -match '^[a-z]{2}(-[A-Z]{2})?$' -or $_.Name -eq 'en-PIRATE' }
 if ($cultureFolders) {
     Write-Info "Copying localization folders..."
     foreach ($folder in $cultureFolders) {
