@@ -30,7 +30,6 @@ namespace AemulusConnect
 		{
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
 			pnlMain = new Panel();
-			lblVersion = new Label();
 			menuStrip = new MenuStrip();
 			fileToolStripMenuItem = new ToolStripMenuItem();
 			settingsToolStripMenuItem = new ToolStripMenuItem();
@@ -46,22 +45,6 @@ namespace AemulusConnect
 			pnlMain.Name = "pnlMain";
 			pnlMain.Size = new Size(601, 305);
 			pnlMain.TabIndex = 3;
-			// 
-			// lblVersion
-			//
-			lblVersion.Anchor = AnchorStyles.Left;
-			lblVersion.AutoSize = true;
-			lblVersion.BackColor = Color.White;
-			lblVersion.Font = new Font("Arial", 14F);
-			lblVersion.ForeColor = Color.FromArgb(179, 179, 179);
-			lblVersion.Location = new Point(470, 310);
-			lblVersion.MinimumSize = new Size(120, 0);
-			lblVersion.Name = "lblVersion";
-			lblVersion.RightToLeft = RightToLeft.No;
-			lblVersion.Size = new Size(120, 22);
-			lblVersion.TabIndex = 4;
-			lblVersion.Text = "Version";
-			lblVersion.TextAlign = ContentAlignment.TopRight;
 			//
 			// menuStrip
 			//
@@ -98,7 +81,6 @@ namespace AemulusConnect
 			AutoScaleDimensions = new SizeF(7F, 15F);
 			AutoScaleMode = AutoScaleMode.Font;
 			ClientSize = new Size(602, 335);
-			Controls.Add(lblVersion);
 			Controls.Add(pnlMain);
 			Controls.Add(menuStrip);
 			MainMenuStrip = menuStrip;
@@ -120,7 +102,6 @@ namespace AemulusConnect
 
 		#endregion
 		private Panel pnlMain;
-		private Label lblVersion;
 		private MenuStrip menuStrip;
 		private ToolStripMenuItem fileToolStripMenuItem;
 		private ToolStripMenuItem settingsToolStripMenuItem;

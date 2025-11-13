@@ -24,7 +24,6 @@ namespace AemulusConnect
 			InitializeComponent();
 			versionParts = fullVersion.Split('+');
 			version = versionParts[0];
-			lblVersion.Text = string.Format(Properties.Resources.MainForm_VersionLabel, version);
 			Text = string.Format(Properties.Resources.MainForm_WindowTitleWithVersion, version);
 			_logger.Info($"AemulusConnect version {version} initialized at {DateTime.Now.ToString()}");
 			_logger.Info($"Operating System: {os}");
