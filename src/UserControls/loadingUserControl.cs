@@ -5,45 +5,70 @@ namespace AemulusConnect
 {
 	public partial class loadingUserControl : UserControl
 	{
-		private BackgroundWorker _backgroundWorker;
-		private int maxProgress;
-
 		public event Action? OnLoadingComplete;
 
 		public loadingUserControl()
 		{
 			InitializeComponent();
-
-			maxProgress = progressBar.Maximum;
-
-			_backgroundWorker = new BackgroundWorker();
-			_backgroundWorker.WorkerReportsProgress = true;
-			_backgroundWorker.DoWork += BackgroundWorker_DoWork;
-			_backgroundWorker.ProgressChanged += BackgroundWorker_ProgressChanged;
-			_backgroundWorker.RunWorkerCompleted += BackgroundWorker_RunWorkerCompleted;
 		}
 
 		public void resetProgressBar()
 		{
-			_backgroundWorker.RunWorkerAsync();
-		}
-
-		private void BackgroundWorker_DoWork(object? sender, DoWorkEventArgs e)
-		{
-			for (int i = 0; i <= maxProgress; i++)
+			// Reset progress bar to initial state
+			if (InvokeRequired)
 			{
-				Thread.Sleep(10);
-
-				if (i >= maxProgress)
-					_backgroundWorker.ReportProgress(maxProgress);
-				else
-					_backgroundWorker.ReportProgress(i + 1);
+				Invoke(new Action(() =>
+				{
+					progressBar.Value = 0;
+					progressBar.Maximum = 100;
+				}));
+			}
+			else
+			{
+				progressBar.Value = 0;
+				progressBar.Maximum = 100;
 			}
 		}
 
-		private void BackgroundWorker_ProgressChanged(object? sender, ProgressChangedEventArgs e) => progressBar.Value = e.ProgressPercentage;
+		public void updateProgress(int current, int total)
+		{
+			// Update progress bar based on actual file transfer progress
+			if (InvokeRequired)
+			{
+				Invoke(new Action(() => updateProgressInternal(current, total)));
+			}
+			else
+			{
+				updateProgressInternal(current, total);
+			}
+		}
 
-		private void BackgroundWorker_RunWorkerCompleted(object? sender, RunWorkerCompletedEventArgs e) => onLoadingComplete();
+		private void updateProgressInternal(int current, int total)
+		{
+			// Handle zero-total case (no files to transfer) - trigger completion immediately
+			if (total <= 0)
+			{
+				Task.Run(async () =>
+				{
+					await Task.Delay(500);
+					onLoadingComplete();
+				});
+				return;
+			}
+
+			progressBar.Maximum = total;
+			progressBar.Value = Math.Min(current, total);
+
+			// When complete, trigger the completion event after a short delay
+			if (current >= total)
+			{
+				Task.Run(async () =>
+				{
+					await Task.Delay(500);
+					onLoadingComplete();
+				});
+			}
+		}
 
 		private void onLoadingComplete()
 		{

@@ -34,6 +34,7 @@ namespace AemulusConnect.Helpers
 		public event Action<QuestStatus>? OnStatusChanged;
 		public event Action<DownloadStatus>? OnDownloadStatusChanged;
 		public event Action<Exception>? OnError;
+		public event Action<int, int>? OnTransferProgress; // (currentFile, totalFiles)
 
 		public int numReports { get; private set; }
 
@@ -166,14 +167,23 @@ namespace AemulusConnect.Helpers
 				var tempRemotePath = _remotePath.Replace("\\", "/");
 
 				if (numReports == 0)
+				{
+					// No reports to transfer - trigger progress with (0, 0) to complete UI transition
+					OnTransferProgress?.Invoke(0, 0);
 					return;
+				}
 
 				await logFolderSize();
 				setDownloadStatusAndNotify(DownloadStatus.Downloading);
 				createDirectories(localPath);
 
+				int currentFile = 0;
 				foreach (var remoteFile in remoteFiles)
+				{
 					await transferAndRenameFile(remoteFile, tempLocalPath, tempRemotePath, date);
+					currentFile++;
+					OnTransferProgress?.Invoke(currentFile, numReports);
+				}
 
 				Debug.WriteLine($"Files copied successfully");
 

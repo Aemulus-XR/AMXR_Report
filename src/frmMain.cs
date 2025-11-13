@@ -97,11 +97,17 @@ namespace AemulusConnect
 			_questHelper.OnStatusChanged += questHelper_OnStatusChanged;
 			_questHelper.OnDownloadStatusChanged += questHelper_OnDownloadStatusChanged;
 			_questHelper.OnError += questHelper_OnError;
+			_questHelper.OnTransferProgress += questHelper_OnTransferProgress;
 			_questHelper.InitializeADBServer();
 
 			_loadingUserControl.OnLoadingComplete += loadingUserControl_OnLoadingComplete;
 			_connectedUserControl.BtnTransfer_Click += async () => await connectedUserControl_btnTransfer_Click();
 			_connectedUserControl.BtnViewReports_Click += connectedUserControl_btnViewReports_Click;
+		}
+
+		private void questHelper_OnTransferProgress(int current, int total)
+		{
+			_loadingUserControl.updateProgress(current, total);
 		}
 
 		private void loadingUserControl_OnLoadingComplete()
