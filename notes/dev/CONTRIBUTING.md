@@ -96,10 +96,10 @@ AemulusConnect/
 │   ├── AemulusConnect.csproj         # Project file
 │   └── AemulusConnect.sln            # Solution file
 ├── tools/                            # Build automation scripts
-│   ├── build_and_package.ps1         # Main build script
+│   ├── build-and-package.ps1         # Main build script
 │   ├── verify_prerequisites.ps1      # Prerequisites checker
 │   ├── convert_docs.ps1              # Documentation converter
-│   └── README.md                     # Tools documentation
+│   └── build/                        # Build system internals
 ├── notes/                            # Project documentation
 │   ├── USER_GUIDE.md                # User guide
 │   ├── BUILD.md                      # Build quick reference
@@ -118,8 +118,8 @@ AemulusConnect/
 
 ### Key Dependencies
 
-- **AdvancedSharpAdbClient 3.3.13** - ADB communication library
-- **log4net 3.0.3** - Logging framework
+- **AdvancedSharpAdbClient 3.4.14** - ADB communication library
+- **log4net 3.2.0** - Logging framework
 - **.NET 8** (net8.0-windows10.0.26100.0) - Target framework
 - **Windows Forms** - UI framework
 
@@ -240,17 +240,16 @@ cd tools
 .\verify_prerequisites.ps1
 
 # Build application and create MSI installer
-.\build_and_package.ps1 -Clean
+.\build-and-package.ps1 -Clean
 ```
 
 ### Build Options
 
-| Command                                  | Description           | Output Size |
-| ---------------------------------------- | --------------------- | ----------- |
-| `.\build_and_package.ps1`                | Standard build        | ~5-10 MB    |
-| `.\build_and_package.ps1 -Clean`         | Clean build           | ~5-10 MB    |
-| `.\build_and_package.ps1 -SelfContained` | Includes .NET runtime | ~100+ MB    |
-| `.\build_and_package.ps1 -SkipBuild`     | Only rebuild MSI      | N/A         |
+| Command                                  | Description      | Output Size |
+| ---------------------------------------- | ---------------- | ----------- |
+| `.\build-and-package.ps1`                | Standard build   | ~5-10 MB    |
+| `.\build-and-package.ps1 -Clean`         | Clean build      | ~5-10 MB    |
+| `.\build-and-package.ps1 -SkipBuild`     | Only rebuild MSI | N/A         |
 
 **Output**: `src\output\AemulusConnect.msi`
 

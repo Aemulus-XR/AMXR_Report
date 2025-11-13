@@ -17,10 +17,10 @@ Quick reference for building the AemulusConnect Application and creating install
 
 ```powershell
 cd tools
-.\build_and_package.ps1 -Clean
+.\build-and-package.ps1 -Clean
 ```
 
-This creates `output\AemulusConnect.msi`
+This creates `src\output\AemulusConnect.msi`
 
 ## Development Workflow
 
@@ -28,30 +28,23 @@ This creates `output\AemulusConnect.msi`
 ```powershell
 # Quick build
 cd tools
-.\build_and_package.ps1
+.\build-and-package.ps1
 ```
 
 ### Release Build
 ```powershell
-# Update version in installer\AemulusConnect.wxs first
+# Update version in src\installer\AemulusConnect.wxs first
 cd tools
-.\build_and_package.ps1 -Clean
-```
-
-### Self-Contained (No .NET Required)
-```powershell
-cd tools
-.\build_and_package.ps1 -Clean -SelfContained
+.\build-and-package.ps1 -Clean
 ```
 
 ## Build Options
 
 | Command | Description | Installer Size |
 |---------|-------------|----------------|
-| `.\build_and_package.ps1` | Standard build | ~5-10 MB |
-| `.\build_and_package.ps1 -Clean` | Clean build | ~5-10 MB |
-| `.\build_and_package.ps1 -SelfContained` | Includes .NET runtime | ~100+ MB |
-| `.\build_and_package.ps1 -SkipBuild` | Only rebuild MSI | N/A |
+| `.\build-and-package.ps1` | Standard build | ~5-10 MB |
+| `.\build-and-package.ps1 -Clean` | Clean build | ~5-10 MB |
+| `.\build-and-package.ps1 -SkipBuild` | Only rebuild MSI | N/A |
 
 ## Verify Setup
 
@@ -62,30 +55,23 @@ cd tools
 .\verify_prerequisites.ps1
 ```
 
-## First Time Setup
+## Important Notes
 
-If this is your first time building:
-
-1. **Generate UpgradeCode GUID**:
-   ```powershell
-   [guid]::NewGuid()
-   ```
-
-2. **Update `installer\AemulusConnect.wxs` line 11** with the generated GUID
-
-3. **Never change this GUID** after your first release!
+- The UpgradeCode GUID is already set in `src\installer\AemulusConnect.wxs` (line 12)
+- **Never change this GUID** - it's required for automatic upgrades to work
+- The version is managed through VERSION.md and automatically synchronized
 
 ## Getting Help
 
 ```powershell
 # View detailed help
-Get-Help .\build_and_package.ps1 -Detailed
+Get-Help .\build-and-package.ps1 -Detailed
 
 # View examples
-Get-Help .\build_and_package.ps1 -Examples
+Get-Help .\build-and-package.ps1 -Examples
 
 # View all parameters
-Get-Help .\build_and_package.ps1 -Parameter *
+Get-Help .\build-and-package.ps1 -Parameter *
 ```
 
 ## Troubleshooting
@@ -106,7 +92,7 @@ Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
 
 ```powershell
 # Clean everything and rebuild
-.\build_and_package.ps1 -Clean -Verbose
+.\build-and-package.ps1 -Clean -Verbose
 ```
 
 ## Directory Structure
@@ -117,15 +103,16 @@ AemulusConnect/
 │   ├── installer/              # WiX installer configuration
 │   │   ├── AemulusConnect.wxs
 │   │   └── AemulusConnect.wixproj
-│   └── Shipping/               # Staged files for packaging
-│       ├── bin/                # Application files
-│       └── documentation/      # RTF and PDF docs
-├── tools/                      # Build automation scripts
-│   ├── build-and-package.ps1
-│   ├── verify_prerequisites.ps1
-│   └── build/                  # Build system internals
-└── src/output/                 # Build output (created automatically)
-    └── AemulusConnect.msi
+│   ├── Shipping/               # Staged files for packaging
+│   │   ├── bin/                # Application files
+│   │   ├── documentation/      # RTF and PDF docs
+│   │   └── installer/          # Final MSI installer
+│   └── output/                 # Build output (created automatically)
+│       └── AemulusConnect.msi
+└── tools/                      # Build automation scripts
+    ├── build-and-package.ps1
+    ├── verify_prerequisites.ps1
+    └── build/                  # Build system internals
 ```
 
 ## Detailed Documentation

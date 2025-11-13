@@ -1,5 +1,17 @@
 # Code Review: AemulusConnect Application
 
+> **⚠️ OUTDATED REVIEW:**
+> This code review was performed on version 1.1.0 (2025-11-06). The current version is 2.4.1 (2025-11-13).
+> **Major changes since this review:**
+> - Localization support added (5 languages including en-PIRATE)
+> - Build system completely restructured (Shipping folder, staging pipeline)
+> - Crowdin integration for translations
+> - Version management system implemented
+> - Major installer refactor
+> - Documentation reorganized
+>
+> **This review needs updating to reflect current architecture and features.**
+
 **Review Date:** 2025-11-06
 **Reviewer:** Claude (Automated Code Review)
 **Version:** 1.1.0
@@ -127,8 +139,8 @@ D:\1\GitRepos\Aemulus-XR\AemulusConnect\
                ↓
 ┌──────────────────────────────────────────┐
 │   External Dependencies                  │
-│  • AdvancedSharpAdbClient v3.3.13       │
-│  • log4net v3.0.3                       │
+│  • AdvancedSharpAdbClient v3.4.14       │
+│  • log4net v3.2.0                       │
 │  • ADB Platform Tools                   │
 └──────────────────────────────────────────┘
 ```
@@ -198,6 +210,7 @@ D:\1\GitRepos\Aemulus-XR\AemulusConnect\
 **Responsibility:** User configuration interface
 
 **Key Features:**
+- Language selection (5 languages including en-PIRATE)
 - Three path configurations (Reports, Archive, Output)
 - Folder browser for local output path
 - Persists via SettingsManager
@@ -207,6 +220,7 @@ D:\1\GitRepos\Aemulus-XR\AemulusConnect\
 - Simple, focused UI
 - Integration with folder browser
 - Immediate persistence
+- Multi-language support
 
 **Issues:**
 - No path validation

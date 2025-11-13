@@ -64,7 +64,6 @@ Your installer will be created at: `src\output\AemulusConnect.msi`
 
 **Parameters:**
 - `-Clean` - Remove all previous build artifacts
-- `-SelfContained` - Include .NET runtime in installer
 - `-SkipBuild` - Only rebuild installer (skip app build)
 - `-Verbose` - Show detailed output
 
@@ -75,9 +74,6 @@ Your installer will be created at: `src\output\AemulusConnect.msi`
 
 # Clean build
 .\build-and-package.ps1 -Clean
-
-# Self-contained (no .NET required on target)
-.\build-and-package.ps1 -Clean -SelfContained
 
 # Quick installer rebuild
 .\build-and-package.ps1 -SkipBuild
@@ -108,12 +104,11 @@ Your MSI installer will:
 - ✅ Support automatic upgrades when version is incremented
 - ✅ Clean uninstallation
 
-## Build Types Comparison
+## Build Type
 
-| Type                    | Command                                      | Size     | .NET Required | Best For                |
-| ----------------------- | -------------------------------------------- | -------- | ------------- | ----------------------- |
-| **Framework-Dependent** | `.\build-and-package.ps1`                    | ~5-10 MB | Yes           | Enterprise, dev testing |
-| **Self-Contained**      | `.\build-and-package.ps1 -SelfContained`     | ~100+ MB | No            | Public distribution     |
+| Type                    | Command                   | Size     | .NET Required | Best For            |
+| ----------------------- | ------------------------- | -------- | ------------- | ------------------- |
+| **Framework-Dependent** | `.\build-and-package.ps1` | ~5-10 MB | Yes           | All distributions   |
 
 ## Common Workflows
 
@@ -219,6 +214,9 @@ AemulusConnect/
 │   │   ├── AemulusConnect.wxs         ← WiX installer config
 │   │   └── AemulusConnect.wixproj     ← WiX project file
 │   ├── Shipping/                      ← Staged files
+│   │   ├── bin/                       ← Application binaries
+│   │   ├── documentation/             ← Generated docs
+│   │   └── installer/                 ← Final MSI
 │   └── output/
 │       └── AemulusConnect.msi         ← Generated installer
 └── tools/

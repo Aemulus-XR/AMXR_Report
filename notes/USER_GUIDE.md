@@ -180,11 +180,12 @@ If you need help troubleshooting:
 
 Click the gear icon (⚙️) in the top-right corner to customize:
 
+- **Language** - Choose your preferred language (English, Arabic, German, Spanish, French, or Pirate)
 - **Reports Location** - Where to find reports on your Quest (default: `sdcard\Documents\`)
 - **Archive Location** - Where to store archived files on Quest (default: `sdcard\Documents\Archive\`)
 - **Output Location** - Where to save reports on your PC (default: `Desktop\AemulusConnect\`)
 
-> **Tip**: Most users don't need to change these settings. Only modify if you have a custom setup.
+> **Tip**: Most users don't need to change the location settings. Only modify if you have a custom setup.
 
 ## Uninstalling
 
