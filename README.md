@@ -111,7 +111,7 @@ See our [Contributing Guide](notes/dev/CONTRIBUTING.md) for detailed instruction
 
 ## Support & Community
 
-- 💬 **Discord**: [Join our community](https://discord.gg/gQH4mXWQRT)
+- 💬 **Discord**: [Join our community](https://discord.gg/Z6qhRUV6dh)
 - 🐛 **Bug Reports**: [Open an issue](https://github.com/Aemulus-XR/AemulusConnect/issues/new?template=bug_report.md)
 - ✨ **Feature Requests**: [Suggest a feature](https://github.com/Aemulus-XR/AemulusConnect/issues/new?template=feature_request.md)
 - 🌐 **Aemulus XR**: [www.aemulus-xr.com](https://www.aemulus-xr.com/)
@@ -138,7 +138,7 @@ This project is licensed under the **MIT License** - see [LICENSE.md](notes/LICE
 
 ### Project Maintainer
 
-**Scott Kirvan** ([cptvideo](https://github.com/ScottKirvan))
+**Scott Kirvan**:
 - GitHub: [@ScottKirvan](https://github.com/ScottKirvan)
 - LinkedIn: [scottkirvan](https://www.linkedin.com/in/scottkirvan/)
 - Discord: cptvideo
