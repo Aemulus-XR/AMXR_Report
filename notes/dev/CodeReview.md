@@ -206,29 +206,30 @@ D:\1\GitRepos\Aemulus-XR\AemulusConnect\
 ---
 
 #### SettingsForm.cs - Configuration Dialog
-**Lines of Code:** ~150
+**Lines of Code:** ~130
 **Responsibility:** User configuration interface
 
 **Key Features:**
 - Language selection (5 languages including en-PIRATE)
-- Three path configurations (Reports, Archive, Output)
+- Output path configuration (PC location only)
 - Folder browser for local output path
+- Remote paths (Reports, Archive) hidden from UI but preserved in settings.ini
 - Persists via SettingsManager
 - Updates active QuestHelper instance
 
 **Strengths:**
-- Simple, focused UI
+- Simple, focused UI - exposes only safe user-editable settings
 - Integration with folder browser
 - Immediate persistence
 - Multi-language support
+- Prevents accidental misconfiguration of Quest device paths
 
 **Issues:**
-- No path validation
+- No path validation for output location
 - No feedback on save success/failure
-- Device paths use TextBox instead of proper validation
 - No cancel/apply distinction (saves on OK)
 
-**Rating:** Adequate (6/10)
+**Rating:** Good (7/10)
 
 ---
 
