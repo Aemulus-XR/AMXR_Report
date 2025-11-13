@@ -228,6 +228,6 @@ If translations aren't syncing:
 
 ## Done!
 
-Once all checkboxes are complete, delete this file or move it to a `notes/` folder for future reference.
+Once all checkboxes are complete, this file can be archived or kept as reference.
 
-For ongoing management, see [CONTRIBUTING.md - Managing Translations](notes/CONTRIBUTING.md#managing-translations).
+For ongoing management, see [CONTRIBUTING.md - Managing Translations](CONTRIBUTING.md#managing-translations).

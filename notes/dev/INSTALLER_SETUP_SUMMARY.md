@@ -5,32 +5,31 @@
 Your project now has a complete WiX installer solution with PowerShell automation:
 
 ### ✅ Installer Configuration
-- **[installer/AemulusConnect.wxs](installer/AemulusConnect.wxs)** - WiX installer definition
+- **[src/installer/AemulusConnect.wxs](../../src/installer/AemulusConnect.wxs)** - WiX installer definition
   - Pre-configured for your application
   - UpgradeCode GUID already set: `8b7c49af-4352-4886-a835-dd52f7b44131`
-  - Version 1.0.0.0
+  - Version 2.4.1.0
   - Includes all dependencies and ADB tools
 
 ### ✅ PowerShell Build Scripts
-- **[tools/build_and_package.ps1](tools/build_and_package.ps1)** - Main build automation
+- **[tools/build-and-package.ps1](../../tools/build-and-package.ps1)** - Main build automation
   - Builds application and creates MSI
   - Supports clean builds, self-contained, and verbose modes
   - Comprehensive error handling and colored output
 
-- **[tools/verify_prerequisites.ps1](tools/verify_prerequisites.ps1)** - Environment checker
+- **[tools/verify_prerequisites.ps1](../../tools/verify_prerequisites.ps1)** - Environment checker
   - Validates all requirements are met
   - Checks .NET SDK, WiX Toolset, and project files
   - Detailed mode shows version information
 
 ### ✅ Documentation
 - **[BUILD.md](BUILD.md)** - Quick reference guide
-- **[installer/README.md](installer/README.md)** - Complete installer documentation
-- **[installer/SETUP_GUIDE.md](installer/SETUP_GUIDE.md)** - Step-by-step setup walkthrough
-- **[tools/README.md](tools/README.md)** - Build automation reference
+- **[CONTRIBUTING.md](CONTRIBUTING.md)** - Complete build and contribution guide
+- **[INSTALLER_SETUP_SUMMARY.md](INSTALLER_SETUP_SUMMARY.md)** - This file
 
 ### ✅ Configuration Updates
-- **[.gitignore](.gitignore)** - Updated to ignore WiX build artifacts and output directory
-- **[src/Properties/PublishProfiles/](src/Properties/PublishProfiles/)** - Build profiles created
+- **[.gitignore](../../.gitignore)** - Updated to ignore WiX build artifacts and output directory
+- Shipping folder structure created for staging files
 
 ## What You Need To Do
 
@@ -54,14 +53,14 @@ Your project now has a complete WiX installer solution with PowerShell automatio
 
 ```powershell
 cd tools
-.\build_and_package.ps1 -Clean
+.\build-and-package.ps1 -Clean
 ```
 
-Your installer will be created at: `output\AemulusConnect.msi`
+Your installer will be created at: `src\output\AemulusConnect.msi`
 
 ## PowerShell Script Features
 
-### build_and_package.ps1
+### build-and-package.ps1
 
 **Parameters:**
 - `-Clean` - Remove all previous build artifacts
@@ -72,16 +71,16 @@ Your installer will be created at: `output\AemulusConnect.msi`
 **Examples:**
 ```powershell
 # Standard build
-.\build_and_package.ps1
+.\build-and-package.ps1
 
 # Clean build
-.\build_and_package.ps1 -Clean
+.\build-and-package.ps1 -Clean
 
 # Self-contained (no .NET required on target)
-.\build_and_package.ps1 -Clean -SelfContained
+.\build-and-package.ps1 -Clean -SelfContained
 
 # Quick installer rebuild
-.\build_and_package.ps1 -SkipBuild
+.\build-and-package.ps1 -SkipBuild
 ```
 
 ### verify_prerequisites.ps1
@@ -111,10 +110,10 @@ Your MSI installer will:
 
 ## Build Types Comparison
 
-| Type                    | Command                                  | Size     | .NET Required | Best For                |
-| ----------------------- | ---------------------------------------- | -------- | ------------- | ----------------------- |
-| **Framework-Dependent** | `.\build_and_package.ps1`                | ~5-10 MB | Yes           | Enterprise, dev testing |
-| **Self-Contained**      | `.\build_and_package.ps1 -SelfContained` | ~100+ MB | No            | Public distribution     |
+| Type                    | Command                                      | Size     | .NET Required | Best For                |
+| ----------------------- | -------------------------------------------- | -------- | ------------- | ----------------------- |
+| **Framework-Dependent** | `.\build-and-package.ps1`                    | ~5-10 MB | Yes           | Enterprise, dev testing |
+| **Self-Contained**      | `.\build-and-package.ps1 -SelfContained`     | ~100+ MB | No            | Public distribution     |
 
 ## Common Workflows
 
@@ -122,16 +121,16 @@ Your MSI installer will:
 ```powershell
 # Make code changes...
 cd tools
-.\build_and_package.ps1
-# Test the MSI in output/ folder
+.\build-and-package.ps1
+# Test the MSI in src\output\ folder
 ```
 
 ### Release Build
 ```powershell
-# 1. Update version in installer\AemulusConnect.wxs
+# 1. Update version in src\installer\AemulusConnect.wxs
 # 2. Build
 cd tools
-.\build_and_package.ps1 -Clean
+.\build-and-package.ps1 -Clean
 
 # 3. Test thoroughly
 # 4. Optionally code sign the MSI
@@ -141,7 +140,7 @@ cd tools
 ```powershell
 # If you only changed the .wxs file
 cd tools
-.\build_and_package.ps1 -SkipBuild
+.\build-and-package.ps1 -SkipBuild
 ```
 
 ## Getting Help
@@ -149,9 +148,9 @@ cd tools
 All scripts have built-in PowerShell help:
 
 ```powershell
-Get-Help .\build_and_package.ps1
-Get-Help .\build_and_package.ps1 -Detailed
-Get-Help .\build_and_package.ps1 -Examples
+Get-Help .\build-and-package.ps1
+Get-Help .\build-and-package.ps1 -Detailed
+Get-Help .\build-and-package.ps1 -Examples
 ```
 
 ## Troubleshooting
@@ -170,21 +169,21 @@ Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
 ### Build Errors
 Run with verbose output:
 ```powershell
-.\build_and_package.ps1 -Clean -Verbose
+.\build-and-package.ps1 -Clean -Verbose
 ```
 
 ## Version Updates
 
 To create a new version:
 
-1. Edit `installer\AemulusConnect.wxs` line 9:
+1. Edit `src\installer\AemulusConnect.wxs` line 10:
    ```xml
-   <?define ProductVersion = "1.0.1.0" ?>
+   <?define ProductVersion = "2.4.2.0" ?>
    ```
 
 2. Build:
    ```powershell
-   .\build_and_package.ps1 -Clean
+   .\build-and-package.ps1 -Clean
    ```
 
 3. The new installer will automatically upgrade existing installations!
@@ -202,37 +201,38 @@ The PowerShell scripts provide:
 
 ## Next Steps
 
-1. **Verify Prerequisites**: `.\verify_prerequisites.ps1`
-2. **Build First Installer**: `.\build_and_package.ps1 -Clean`
-3. **Test Installation**: Double-click `output\AemulusConnect.msi`
-4. **Read Full Docs**: See [installer/README.md](installer/README.md)
+1. **Verify Prerequisites**: `.\verify_prerequisites.ps1` (from tools/ directory)
+2. **Build First Installer**: `.\build-and-package.ps1 -Clean` (from tools/ directory)
+3. **Test Installation**: Double-click `src\output\AemulusConnect.msi`
+4. **Read Full Docs**: See [BUILD.md](BUILD.md) and [CONTRIBUTING.md](CONTRIBUTING.md)
 
 ## File Locations
 
 ```
 AemulusConnect/
-├── BUILD.md                           ← Quick build reference
-├── INSTALLER_SETUP_SUMMARY.md         ← This file
-├── installer/
-│   ├── AemulusConnect.wxs         ← WiX installer config
-│   ├── README.md                      ← Full installer docs
-│   └── SETUP_GUIDE.md                 ← Setup walkthrough
-├── tools/
-│   ├── build_and_package.ps1          ← Main build script
-│   ├── verify_prerequisites.ps1       ← Environment checker
-│   └── README.md                      ← Tools reference
-└── output/
-    └── AemulusConnect.msi         ← Generated installer
+├── notes/dev/
+│   ├── BUILD.md                       ← Quick build reference
+│   ├── INSTALLER_SETUP_SUMMARY.md     ← This file
+│   └── CONTRIBUTING.md                ← Complete build guide
+├── src/
+│   ├── installer/
+│   │   ├── AemulusConnect.wxs         ← WiX installer config
+│   │   └── AemulusConnect.wixproj     ← WiX project file
+│   ├── Shipping/                      ← Staged files
+│   └── output/
+│       └── AemulusConnect.msi         ← Generated installer
+└── tools/
+    ├── build-and-package.ps1          ← Main build script
+    ├── verify_prerequisites.ps1       ← Environment checker
+    └── build/                         ← Build system internals
 ```
 
 ## Support Resources
 
 - **Quick Start**: [BUILD.md](BUILD.md)
-- **Detailed Setup**: [installer/SETUP_GUIDE.md](installer/SETUP_GUIDE.md)
-- **Full Documentation**: [installer/README.md](installer/README.md)
-- **Tools Reference**: [tools/README.md](tools/README.md)
+- **Full Documentation**: [CONTRIBUTING.md](CONTRIBUTING.md)
 - **WiX Docs**: https://wixtoolset.org/docs/
 
 ---
 
-**Ready to build?** Just run: `cd tools && .\build_and_package.ps1 -Clean`
+**Ready to build?** Just run: `cd tools && .\build-and-package.ps1 -Clean`

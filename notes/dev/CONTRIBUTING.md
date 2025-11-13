@@ -262,8 +262,12 @@ cd src
 dotnet restore
 dotnet build AemulusConnect.csproj --configuration Release
 
+# Stage files
+cd ..\tools\build
+.\stage-shipping.ps1
+
 # Create installer
-cd installer
+cd ..\..\src\installer
 wix build AemulusConnect.wxs -out ..\output\AemulusConnect.msi
 ```
 
@@ -584,7 +588,7 @@ Need help? Here's how to reach us:
 
 ## Additional Resources
 
-- **[USER_GUIDE.md](USER_GUIDE.md)** - User documentation
+- **[USER_GUIDE.md](../USER_GUIDE.md)** - User documentation
 - **[BUILD.md](BUILD.md)** - Build quick reference
 - **[CodeReview.md](CodeReview.md)** - Technical analysis and improvement suggestions
 - **[CHANGELOG.md](CHANGELOG.md)** - Version history
@@ -592,7 +596,7 @@ Need help? Here's how to reach us:
 
 ## License
 
-By contributing to AemulusConnect, you agree that your contributions will be licensed under the [MIT License](LICENSE.md).
+By contributing to AemulusConnect, you agree that your contributions will be licensed under the [MIT License](../LICENSE.md).
 
 ---
 

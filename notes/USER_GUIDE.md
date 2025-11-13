@@ -222,4 +222,4 @@ Current version documentation: **2.4.1**
 
 ---
 
-For developer documentation, build instructions, and contribution guidelines, see [CONTRIBUTING.md](CONTRIBUTING.md).
+For developer documentation, build instructions, and contribution guidelines, see [CONTRIBUTING.md](dev/CONTRIBUTING.md).

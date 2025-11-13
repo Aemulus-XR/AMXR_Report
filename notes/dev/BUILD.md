@@ -113,24 +113,25 @@ Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
 
 ```
 AemulusConnect/
-├── src/                    # Application source code
-├── installer/              # WiX installer configuration
-│   ├── AemulusConnect.wxs
-│   ├── README.md          # Detailed installer documentation
-│   └── SETUP_GUIDE.md     # Step-by-step setup guide
-├── tools/                  # Build automation scripts
-│   ├── build_and_package.ps1
+├── src/                        # Application source code
+│   ├── installer/              # WiX installer configuration
+│   │   ├── AemulusConnect.wxs
+│   │   └── AemulusConnect.wixproj
+│   └── Shipping/               # Staged files for packaging
+│       ├── bin/                # Application files
+│       └── documentation/      # RTF and PDF docs
+├── tools/                      # Build automation scripts
+│   ├── build-and-package.ps1
 │   ├── verify_prerequisites.ps1
-│   └── README.md          # Tools documentation
-└── output/                 # Build output (created automatically)
+│   └── build/                  # Build system internals
+└── src/output/                 # Build output (created automatically)
     └── AemulusConnect.msi
 ```
 
 ## Detailed Documentation
 
-- **[installer/SETUP_GUIDE.md](installer/SETUP_GUIDE.md)** - First-time setup walkthrough
-- **[installer/README.md](installer/README.md)** - Complete installer documentation
-- **[tools/README.md](tools/README.md)** - Build automation reference
+- **[INSTALLER_SETUP_SUMMARY.md](INSTALLER_SETUP_SUMMARY.md)** - Installer setup summary
+- **[CONTRIBUTING.md](CONTRIBUTING.md)** - Complete build and contribution guide
 
 ## Manual Build (Without Scripts)
 
@@ -139,8 +140,12 @@ AemulusConnect/
 cd src
 dotnet build "AemulusConnect.csproj" --configuration Release
 
+# Stage files (run staging script)
+cd ..\tools\build
+.\stage-shipping.ps1
+
 # Create installer
-cd ..\installer
+cd ..\..\src\installer
 wix build AemulusConnect.wxs -out ..\output\AemulusConnect.msi
 ```
 
@@ -149,15 +154,15 @@ wix build AemulusConnect.wxs -out ..\output\AemulusConnect.msi
 ### Test Installation
 ```powershell
 # Install with logging
-msiexec /i output\AemulusConnect.msi /l*v install.log
+msiexec /i src\output\AemulusConnect.msi /l*v install.log
 
 # Silent install
-msiexec /i output\AemulusConnect.msi /quiet /qn
+msiexec /i src\output\AemulusConnect.msi /quiet /qn
 ```
 
 ### Code Signing (Optional)
 ```powershell
-signtool sign /f certificate.pfx /p password /tr http://timestamp.digicert.com output\AemulusConnect.msi
+signtool sign /f certificate.pfx /p password /tr http://timestamp.digicert.com src\output\AemulusConnect.msi
 ```
 
 ## System Requirements
@@ -175,6 +180,6 @@ signtool sign /f certificate.pfx /p password /tr http://timestamp.digicert.com o
 ## Support
 
 For issues or questions:
-- Check [installer/README.md](installer/README.md#troubleshooting) troubleshooting section
+- Check [CONTRIBUTING.md](CONTRIBUTING.md) for detailed build instructions
 - Review build output for error messages
-- Run `.\verify_prerequisites.ps1 -Detailed` for diagnostic info
+- Run `.\verify_prerequisites.ps1` in the tools/ directory for diagnostic info

@@ -60,7 +60,7 @@ cd tools
 .\build_and_package.ps1 -Clean
 ```
 
-🛠️ **Developer guide:** [CONTRIBUTING.md](notes/CONTRIBUTING.md)
+🛠️ **Developer guide:** [CONTRIBUTING.md](notes/dev/CONTRIBUTING.md)
 
 ## System Requirements
 
@@ -71,13 +71,13 @@ cd tools
 
 ## Documentation
 
-| Document                                        | Description                                                |
-| ----------------------------------------------- | ---------------------------------------------------------- |
-| **[User Guide](notes/USER_GUIDE.md)**           | Installation, usage, and troubleshooting for end users     |
-| **[Contributing Guide](notes/CONTRIBUTING.md)** | Developer setup, architecture, and contribution guidelines |
-| **[Build Guide](notes/BUILD.md)**               | Quick reference for building and packaging                 |
-| **[Changelog](notes/CHANGELOG.md)**             | Version history and release notes                          |
-| **[Code of Conduct](notes/CODE_OF_CONDUCT.md)** | Community guidelines and expectations                      |
+| Document                                             | Description                                                |
+| ---------------------------------------------------- | ---------------------------------------------------------- |
+| **[User Guide](notes/USER_GUIDE.md)**                | Installation, usage, and troubleshooting for end users     |
+| **[Contributing Guide](notes/dev/CONTRIBUTING.md)**  | Developer setup, architecture, and contribution guidelines |
+| **[Build Guide](notes/dev/BUILD.md)**                | Quick reference for building and packaging                 |
+| **[Changelog](notes/dev/CHANGELOG.md)**              | Version history and release notes                          |
+| **[Code of Conduct](notes/dev/CODE_OF_CONDUCT.md)** | Community guidelines and expectations                      |
 
 ## How It Works
 
@@ -92,8 +92,8 @@ AemulusConnect uses the Android Debug Bridge (ADB) to communicate securely with 
 
 - **Language**: C# 12.0
 - **Framework**: .NET 8.0 with Windows Forms
-- **ADB Library**: AdvancedSharpAdbClient 3.3.13
-- **Logging**: log4net 3.0.3
+- **ADB Library**: AdvancedSharpAdbClient 3.4.14
+- **Logging**: log4net 3.2.0
 - **Installer**: WiX Toolset v4
 - **Build System**: PowerShell automation scripts
 
@@ -107,7 +107,7 @@ We welcome contributions! Whether you're fixing bugs, adding features, improving
 4. 📤 Push to your branch (`git push origin feature/amazing-feature`)
 5. 🔁 Open a Pull Request
 
-See our [Contributing Guide](notes/CONTRIBUTING.md) for detailed instructions.
+See our [Contributing Guide](notes/dev/CONTRIBUTING.md) for detailed instructions.
 
 ## Support & Community
 
@@ -122,7 +122,7 @@ See our [Contributing Guide](notes/CONTRIBUTING.md) for detailed instructions.
 **Status**: Active Development
 **Branch**: `main` (stable, deployed)
 
-See [CHANGELOG.md](notes/CHANGELOG.md) for version history and [TODO.md](notes/TODO.md) for planned features.
+See [CHANGELOG.md](notes/dev/CHANGELOG.md) for version history and [TODO.md](notes/dev/TODO.md) for planned features.
 
 ## Credits & Acknowledgments
 
