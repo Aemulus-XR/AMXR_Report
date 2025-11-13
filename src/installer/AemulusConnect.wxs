@@ -71,6 +71,12 @@
         <Directory Id="INSTALLFOLDER" Name="$(var.ProductName)">
           <Directory Id="BINFOLDER" Name="bin">
             <Directory Id="PlatformToolsFolder" Name="platform-tools" />
+            <!-- Localization culture folders -->
+            <Directory Id="Culture_arSA" Name="ar-SA" />
+            <Directory Id="Culture_deDE" Name="de-DE" />
+            <Directory Id="Culture_esES" Name="es-ES" />
+            <Directory Id="Culture_frFR" Name="fr-FR" />
+            <Directory Id="Culture_enPIRATE" Name="en-PIRATE" />
           </Directory>
           <Directory Id="DOCUMENTATIONFOLDER" Name="documentation" />
         </Directory>
@@ -92,28 +98,32 @@
       <Component Id="MainExecutable" Guid="d30b4069-00ca-424a-9e68-5b43fdfa7d74">
         <File
           Id="AemulusConnectExe"
-          Source="$(var.BuildOutputPath)\AemulusConnect.exe"
+          Source="$(var.BuildOutputPath)\bin\AemulusConnect.exe"
           KeyPath="yes">
           <!-- File association and capabilities can be added here if needed -->
         </File>
 
         <!-- All DLL dependencies -->
-        <File Source="$(var.BuildOutputPath)\AemulusConnect.dll" />
-        <File Source="$(var.BuildOutputPath)\AemulusConnect.runtimeconfig.json" />
-        <File Source="$(var.BuildOutputPath)\AemulusConnect.deps.json" />
+        <File Source="$(var.BuildOutputPath)\bin\AemulusConnect.dll" />
+        <File Source="$(var.BuildOutputPath)\bin\AemulusConnect.runtimeconfig.json" />
+        <File Source="$(var.BuildOutputPath)\bin\AemulusConnect.deps.json" />
 
         <!-- NuGet package dependencies -->
-        <File Source="$(var.BuildOutputPath)\AdvancedSharpAdbClient.dll" />
-        <File Source="$(var.BuildOutputPath)\log4net.dll" />
+        <File Source="$(var.BuildOutputPath)\bin\AdvancedSharpAdbClient.dll" />
+        <File Source="$(var.BuildOutputPath)\bin\log4net.dll" />
+
+        <!-- Windows SDK runtime dependencies -->
+        <File Source="$(var.BuildOutputPath)\bin\Microsoft.Windows.SDK.NET.dll" />
+        <File Source="$(var.BuildOutputPath)\bin\WinRT.Runtime.dll" />
 
         <!-- Configuration files -->
-        <File Source="$(var.BuildOutputPath)\log4net.config" />
+        <File Source="$(var.BuildOutputPath)\bin\log4net.config" />
       </Component>
 
       <!-- ADB Platform Tools -->
       <Component Id="PlatformToolsComponent" Directory="PlatformToolsFolder" Guid="a48a76d8-f696-458e-a734-01ea103437f3">
-        <File Source="$(var.BuildOutputPath)\platform-tools\adb.exe" />
-        <File Source="$(var.BuildOutputPath)\platform-tools\AdbWinApi.dll" />
+        <File Source="$(var.BuildOutputPath)\bin\platform-tools\adb.exe" />
+        <File Source="$(var.BuildOutputPath)\bin\platform-tools\AdbWinApi.dll" />
       </Component>
 
       <!-- Add any additional runtime files that may be present -->
@@ -121,14 +131,42 @@
 
     </ComponentGroup>
 
+    <!-- Localization satellite assemblies -->
+    <ComponentGroup Id="LocalizationComponents">
+      <!-- Arabic (Saudi Arabia) -->
+      <Component Id="Culture_arSA_Component" Directory="Culture_arSA" Guid="1a8f5c2b-9d3e-4f1a-8b7c-2d3e4f5a6b7c">
+        <File Source="$(var.BuildOutputPath)\bin\ar-SA\AemulusConnect.resources.dll" />
+      </Component>
+
+      <!-- German (Germany) -->
+      <Component Id="Culture_deDE_Component" Directory="Culture_deDE" Guid="2b9f6d3c-0e4f-5a2b-9c8d-3e4f5a6b7c8d">
+        <File Source="$(var.BuildOutputPath)\bin\de-DE\AemulusConnect.resources.dll" />
+      </Component>
+
+      <!-- Spanish (Spain) -->
+      <Component Id="Culture_esES_Component" Directory="Culture_esES" Guid="3c0a7e4d-1f5a-6b3c-0d9e-4f5a6b7c8d9e">
+        <File Source="$(var.BuildOutputPath)\bin\es-ES\AemulusConnect.resources.dll" />
+      </Component>
+
+      <!-- French (France) -->
+      <Component Id="Culture_frFR_Component" Directory="Culture_frFR" Guid="4d1b8f5e-2a6b-7c4d-1e0f-5a6b7c8d9e0f">
+        <File Source="$(var.BuildOutputPath)\bin\fr-FR\AemulusConnect.resources.dll" />
+      </Component>
+
+      <!-- Pirate English (Custom) -->
+      <Component Id="Culture_enPIRATE_Component" Directory="Culture_enPIRATE" Guid="5e2c9a6f-3b7c-8d5e-2f1a-6b7c8d9e0f1a">
+        <File Source="$(var.BuildOutputPath)\bin\en-PIRATE\AemulusConnect.resources.dll" />
+      </Component>
+    </ComponentGroup>
+
     <!-- Documentation component -->
     <ComponentGroup Id="DocumentationComponents" Directory="DOCUMENTATIONFOLDER">
       <Component Id="UserDocumentation" Guid="3cc6bcbf-51d9-4600-8e13-74bca12b9405">
-        <!-- User Guide PDF -->
-        <File Id="UserGuidePdf" Source="UserGuide.pdf" Name="UserGuide.pdf" KeyPath="yes" />
-
         <!-- License RTF -->
-        <File Id="LicenseRtf" Source="license.rtf" Name="License.rtf" />
+        <File Id="LicenseRtf" Source="$(var.BuildOutputPath)\documentation\license.rtf" Name="License.rtf" KeyPath="yes" />
+
+        <!-- User Guide PDF -->
+        <File Id="UserGuidePdf" Source="$(var.BuildOutputPath)\documentation\UserManual.pdf" Name="UserGuide.pdf" />
       </Component>
     </ComponentGroup>
 
@@ -216,6 +254,7 @@
       Level="1"
       Description="The main application files and Start Menu shortcuts">
       <ComponentGroupRef Id="ProductComponents" />
+      <ComponentGroupRef Id="LocalizationComponents" />
       <ComponentGroupRef Id="DocumentationComponents" />
       <ComponentGroupRef Id="ApplicationShortcuts" />
     </Feature>
@@ -228,8 +267,8 @@
       <ComponentGroupRef Id="DesktopShortcuts" />
     </Feature>
 
-    <!-- License file -->
-    <WixVariable Id="WixUILicenseRtf" Value="license.rtf" />
+    <!-- License file for installer dialog -->
+    <WixVariable Id="WixUILicenseRtf" Value="$(var.BuildOutputPath)\documentation\license.rtf" />
 
     <!-- Custom branding images (optional - comment out if images don't exist) -->
     <!-- Banner: 493x58 pixels, shown at top of most dialogs -->

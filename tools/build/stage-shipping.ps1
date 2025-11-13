@@ -131,17 +131,20 @@ if (Test-Path $ShippingDir) {
     }
 }
 
-# Create directory structure
+# Create directory structure (bin/, documentation/, installer/)
 Write-Host "  Creating directory structure..." -NoNewline
 New-Item -ItemType Directory -Path $ShippingDir -Force | Out-Null
-$ShippingPlatformTools = Join-Path $ShippingDir "platform-tools"
-New-Item -ItemType Directory -Path $ShippingPlatformTools -Force | Out-Null
-$ShippingInstallerDir = Join-Path $ShippingDir "installer"
+New-Item -ItemType Directory -Path $ShippingBinDir -Force | Out-Null
+New-Item -ItemType Directory -Path $ShippingDocsDir -Force | Out-Null
 New-Item -ItemType Directory -Path $ShippingInstallerDir -Force | Out-Null
+
+# Create bin/platform-tools subdirectory
+$ShippingBinPlatformTools = Join-Path $ShippingBinDir "platform-tools"
+New-Item -ItemType Directory -Path $ShippingBinPlatformTools -Force | Out-Null
 Write-Host " OK" -ForegroundColor Green
 
-# Copy main application files
-Write-Host "  Copying application files..." -NoNewline
+# Copy main application files to bin/
+Write-Host "  Copying application files to bin/..." -NoNewline
 $mainFiles = @(
     "AemulusConnect.exe",
     "AemulusConnect.dll",
@@ -149,21 +152,23 @@ $mainFiles = @(
     "AemulusConnect.deps.json",
     "AdvancedSharpAdbClient.dll",
     "log4net.dll",
-    "log4net.config"
+    "log4net.config",
+    "Microsoft.Windows.SDK.NET.dll",
+    "WinRT.Runtime.dll"
 )
 
 $copiedCount = 0
 foreach ($file in $mainFiles) {
     $sourcePath = Join-Path $BuildOutputPath $file
     if (Test-Path $sourcePath) {
-        Copy-Item -Path $sourcePath -Destination $ShippingDir -Force
+        Copy-Item -Path $sourcePath -Destination $ShippingBinDir -Force
         $copiedCount++
     }
 }
 Write-Host " OK ($copiedCount files)" -ForegroundColor Green
 
-# Copy platform-tools
-Write-Host "  Copying platform-tools..." -NoNewline
+# Copy platform-tools to bin/platform-tools/
+Write-Host "  Copying platform-tools to bin/platform-tools/..." -NoNewline
 $platformToolsFiles = @("adb.exe", "AdbWinApi.dll")
 $sourcePlatformTools = Join-Path $BuildOutputPath "platform-tools"
 $toolsCopied = 0
@@ -171,44 +176,37 @@ $toolsCopied = 0
 foreach ($file in $platformToolsFiles) {
     $sourcePath = Join-Path $sourcePlatformTools $file
     if (Test-Path $sourcePath) {
-        Copy-Item -Path $sourcePath -Destination $ShippingPlatformTools -Force
+        Copy-Item -Path $sourcePath -Destination $ShippingBinPlatformTools -Force
         $toolsCopied++
     }
 }
 Write-Host " OK ($toolsCopied files)" -ForegroundColor Green
 
-# Copy localization folders
-Write-Host "  Copying localization folders..." -NoNewline
+# Copy localization folders to bin/
+Write-Host "  Copying localization folders to bin/..." -NoNewline
 $cultureFolders = Get-ChildItem -Path $BuildOutputPath -Directory |
     Where-Object { $_.Name -match '^[a-z]{2}(-[A-Z]{2})?$' -or $_.Name -eq 'en-PIRATE' }
 
 $cultureCopied = 0
 if ($cultureFolders) {
     foreach ($folder in $cultureFolders) {
-        $destPath = Join-Path $ShippingDir $folder.Name
+        $destPath = Join-Path $ShippingBinDir $folder.Name
         Copy-Item -Path $folder.FullName -Destination $destPath -Recurse -Force
         $cultureCopied++
     }
 }
 Write-Host " OK ($cultureCopied cultures)" -ForegroundColor Green
 
-# Copy documentation (if available)
-Write-Host "  Copying documentation..." -NoNewline
-$docsToCopy = @{
-    (Join-Path $InstallerDir "license.rtf")    = (Join-Path $ShippingDir "license.rtf")
-    (Join-Path $InstallerDir "UserManual.pdf") = (Join-Path $ShippingDir "UserManual.pdf")
-}
-
-$docsCopied = 0
-foreach ($source in $docsToCopy.Keys) {
-    if (Test-Path $source) {
-        Copy-Item -Path $source -Destination $docsToCopy[$source] -Force
-        $docsCopied++
-    }
-}
-Write-Host " OK ($docsCopied files)" -ForegroundColor Green
+# Note: Documentation files are created by convert-docs.ps1 directly into documentation/
+# This includes license.rtf and UserManual.pdf which are generated from Markdown sources
 
 Write-Host ""
 Write-Host "Shipping folder staged successfully!" -ForegroundColor Green
-Write-Host "  Location: $ShippingDir" -ForegroundColor Gray
+Write-Host "  Structure:" -ForegroundColor Gray
+Write-Host "    bin/              - Application binaries and runtime files" -ForegroundColor Gray
+Write-Host "    documentation/    - User documentation (license, manual)" -ForegroundColor Gray
+Write-Host "    installer/        - MSI installer output" -ForegroundColor Gray
+Write-Host ""
+Write-Host "  You can test the application by running:" -ForegroundColor Cyan
+Write-Host "    $ShippingBinDir\AemulusConnect.exe" -ForegroundColor Gray
 exit 0

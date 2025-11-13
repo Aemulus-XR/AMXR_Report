@@ -26,9 +26,6 @@
 .PARAMETER SkipBuild
     Skip the build step and only create the installer (assumes build is up to date)
 
-.PARAMETER Verbose
-    Enable verbose output for debugging
-
 .EXAMPLE
     .\build-and-package.ps1
     Standard build with existing artifacts
@@ -57,12 +54,10 @@ param(
     [switch]$SelfContained,
 
     [Parameter(HelpMessage = "Skip the build step and only create installer")]
-    [switch]$SkipBuild,
-
-    [Parameter(HelpMessage = "Enable verbose output")]
-    [Alias("VerboseOutput")]
-    [switch]$Verbose
+    [switch]$SkipBuild
 )
+
+# Note: -Verbose is automatically provided by [CmdletBinding()]
 
 # Set error action preference
 $ErrorActionPreference = "Stop"
@@ -162,7 +157,7 @@ if (-not (Invoke-BuildStep -ScriptName "check-prerequisites" -StepName "Checking
 # Step 2: Update Version Numbers
 $currentStep++
 $versionArgs = @{}
-if ($Verbose) { $versionArgs['VerboseOutput'] = $true }
+if ($PSCmdlet.MyInvocation.BoundParameters['Verbose']) { $versionArgs['VerboseOutput'] = $true }
 Invoke-BuildStep -ScriptName "update-version" -StepName "Updating version numbers" -Step $currentStep -Total $totalSteps -Arguments $versionArgs -Optional | Out-Null
 
 # Step 3: Clean (Optional)
@@ -184,7 +179,7 @@ else {
 if (-not $SkipBuild) {
     $currentStep++
     $restoreArgs = @{}
-    if ($Verbose) { $restoreArgs['Verbose'] = $true }
+    if ($PSCmdlet.MyInvocation.BoundParameters['Verbose']) { $restoreArgs['Verbose'] = $true }
     if (-not (Invoke-BuildStep -ScriptName "restore-packages" -StepName "Restoring NuGet packages" -Step $currentStep -Total $totalSteps -Arguments $restoreArgs)) {
         exit 1
     }
@@ -195,7 +190,7 @@ if (-not $SkipBuild) {
     $currentStep++
     $buildArgs = @{ Configuration = $Configuration }
     if ($SelfContained) { $buildArgs['SelfContained'] = $true }
-    if ($Verbose) { $buildArgs['Verbose'] = $true }
+    if ($PSCmdlet.MyInvocation.BoundParameters['Verbose']) { $buildArgs['Verbose'] = $true }
 
     if (-not (Invoke-BuildStep -ScriptName "build-application" -StepName "Building application" -Step $currentStep -Total $totalSteps -Arguments $buildArgs)) {
         exit 1
@@ -224,7 +219,7 @@ Invoke-BuildStep -ScriptName "convert-docs" -StepName "Converting documentation"
 # Step 8: Build Installer
 $currentStep++
 $installerArgs = @{}
-if ($Verbose) { $installerArgs['Verbose'] = $true }
+if ($PSCmdlet.MyInvocation.BoundParameters['Verbose']) { $installerArgs['Verbose'] = $true }
 if (-not (Invoke-BuildStep -ScriptName "build-installer" -StepName "Building WiX installer" -Step $currentStep -Total $totalSteps -Arguments $installerArgs)) {
     exit 1
 }

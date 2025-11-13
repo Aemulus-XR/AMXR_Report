@@ -6,6 +6,7 @@
 .DESCRIPTION
     Wrapper script that calls the main convert_docs.ps1 script.
     Converts LICENSE.md to license.rtf and USER_GUIDE.md to UserManual.pdf.
+    Outputs to src/Shipping/documentation/ directory.
 
 .EXAMPLE
     .\convert-docs.ps1
@@ -19,7 +20,7 @@ param()
 
 Write-Host "Converting documentation..." -ForegroundColor Cyan
 
-# Call the main convert_docs.ps1 script
+# Call the main convert_docs.ps1 script with output to Shipping/documentation
 $convertDocsScript = Join-Path $ToolsDir "convert_docs.ps1"
 
 if (-not (Test-Path $convertDocsScript)) {
@@ -29,7 +30,10 @@ if (-not (Test-Path $convertDocsScript)) {
 }
 
 try {
-    & $convertDocsScript
+    # Output to Shipping/documentation directory
+    Write-Host "  Output directory: $ShippingDocsDir" -ForegroundColor Gray
+
+    & $convertDocsScript -OutputDir $ShippingDocsDir
 
     if ($LASTEXITCODE -ne 0) {
         Write-Host "  WARNING: Document conversion script returned non-zero exit code" -ForegroundColor Yellow
@@ -38,6 +42,18 @@ try {
     }
 
     Write-Host "  Documentation converted successfully" -ForegroundColor Green
+
+    # Show what was created
+    $licenseRtf = Join-Path $ShippingDocsDir "license.rtf"
+    $userManualPdf = Join-Path $ShippingDocsDir "UserManual.pdf"
+
+    if (Test-Path $licenseRtf) {
+        Write-Host "    Created: license.rtf" -ForegroundColor Gray
+    }
+    if (Test-Path $userManualPdf) {
+        Write-Host "    Created: UserManual.pdf" -ForegroundColor Gray
+    }
+
     exit 0
 }
 catch {

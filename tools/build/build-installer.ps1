@@ -18,9 +18,7 @@
 #>
 
 [CmdletBinding()]
-param(
-    [switch]$Verbose
-)
+param()
 
 # Import helpers
 . (Join-Path $PSScriptRoot "helpers.ps1")
@@ -58,7 +56,7 @@ try {
             "-o", $OutputDir
         )
 
-        if ($Verbose) {
+        if ($PSCmdlet.MyInvocation.BoundParameters['Verbose']) {
             $buildArgs += "-v", "detailed"
         }
         else {
@@ -88,7 +86,7 @@ try {
                 "-d", "BuildOutputPath=$BuildOutputPath"
             )
 
-            if ($Verbose) {
+            if ($PSCmdlet.MyInvocation.BoundParameters['Verbose']) {
                 $wixArgs += "-v"
             }
 

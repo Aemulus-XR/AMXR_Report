@@ -31,9 +31,7 @@ param(
     [ValidateSet("Debug", "Release")]
     [string]$Configuration = "Release",
 
-    [switch]$SelfContained,
-
-    [switch]$Verbose
+    [switch]$SelfContained
 )
 
 # Import helpers
@@ -68,7 +66,7 @@ try {
         $buildArgs += "--self-contained", "true"
     }
 
-    if (-not $Verbose) {
+    if (-not ($PSCmdlet.MyInvocation.BoundParameters['Verbose'])) {
         $buildArgs += "--verbosity", "minimal"
     }
     else {

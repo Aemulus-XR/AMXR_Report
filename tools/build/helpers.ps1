@@ -172,36 +172,8 @@ $Global:NotesDir = $Script:NotesDir
 
 #endregion
 
-#region Exports
-
-# Export functions
-Export-ModuleMember -Function @(
-    'Write-Step',
-    'Write-Success',
-    'Write-Info',
-    'Write-Warning',
-    'Write-ErrorMessage',
-    'Test-CommandExists',
-    'Get-FormattedFileSize'
-)
-
-# Export variables
-Export-ModuleMember -Variable @(
-    'RootDir',
-    'SrcDir',
-    'ProjectFile',
-    'InstallerDir',
-    'WxsFile',
-    'WixProjectFile',
-    'ShippingDir',
-    'ShippingBinDir',
-    'ShippingDocsDir',
-    'ShippingInstallerDir',
-    'ToolsDir',
-    'NotesDir'
-)
-
-#endregion
+# Note: This file is dot-sourced, not imported as a module
+# All functions and variables defined above are automatically available to the calling script
 
 # Ensure error action preference is set
 if (-not $Global:ErrorActionPreference) {

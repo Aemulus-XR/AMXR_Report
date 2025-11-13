@@ -3,11 +3,14 @@
     <OutputName>AemulusConnect</OutputName>
     <OutputType>Package</OutputType>
     <DefineConstants>BuildOutputPath=$(BuildOutputPath)</DefineConstants>
+    <!-- Suppress .wixpdb generation entirely (debug symbols not needed for distribution) -->
+    <SuppressPdbOutput>true</SuppressPdbOutput>
   </PropertyGroup>
 
   <ItemGroup>
-    <None Include="license.rtf" />
-    <None Include="UserGuide.pdf" />
+    <!-- Documentation files now come from Shipping/documentation -->
+    <None Include="$(BuildOutputPath)\documentation\license.rtf" />
+    <None Include="$(BuildOutputPath)\documentation\UserManual.pdf" />
   </ItemGroup>
 
   <ItemGroup>

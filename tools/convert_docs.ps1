@@ -6,10 +6,13 @@
     Converts LICENSE.md to RTF and USER_GUIDE.md to PDF for inclusion in the installer
 .PARAMETER SkipPdf
     Skip PDF generation (useful if wkhtmltopdf is not installed)
+.PARAMETER OutputDir
+    Output directory for converted documentation (defaults to src/installer)
 #>
 
 param(
-    [switch]$SkipPdf
+    [switch]$SkipPdf,
+    [string]$OutputDir
 )
 
 #region Helper Functions
@@ -98,9 +101,19 @@ $ScriptRoot = Split-Path -Parent $PSScriptRoot
 $LicenseMd = Join-Path $ScriptRoot "notes/LICENSE.md"
 $UserReadmeMd = Join-Path $ScriptRoot "notes\USER_GUIDE.md"
 $MediaScriptRoot = Join-Path $ScriptRoot "assets\media"
-$InstallerDir = Join-Path $ScriptRoot "src\installer"
-$LicenseRtf = Join-Path $InstallerDir "license.rtf"
-$UserGuidePdf = Join-Path $InstallerDir "UserGuide.pdf"
+
+# Output directory (defaults to src/installer for backward compatibility)
+if (-not $OutputDir) {
+    $OutputDir = Join-Path $ScriptRoot "src\installer"
+}
+
+# Ensure output directory exists
+if (-not (Test-Path $OutputDir)) {
+    New-Item -ItemType Directory -Path $OutputDir -Force | Out-Null
+}
+
+$LicenseRtf = Join-Path $OutputDir "license.rtf"
+$UserGuidePdf = Join-Path $OutputDir "UserManual.pdf"
 
 #endregion
 
@@ -257,6 +270,81 @@ if (-not $SkipPdf) {
                     Write-Warning "Could not generate PDF with any available engine"
                     Write-Info "Install wkhtmltopdf from https://wkhtmltopdf.org/ or a LaTeX distribution"
                     Write-Info "To skip PDF generation, use: .\convert_docs.ps1 -SkipPdf"
+                    Write-Info "Creating placeholder PDF for installer compatibility..."
+
+                    # Create a minimal PDF placeholder
+                    $placeholderContent = @"
+%PDF-1.4
+1 0 obj
+<<
+/Type /Catalog
+/Pages 2 0 R
+>>
+endobj
+2 0 obj
+<<
+/Type /Pages
+/Count 1
+/Kids [3 0 R]
+>>
+endobj
+3 0 obj
+<<
+/Type /Page
+/Parent 2 0 R
+/MediaBox [0 0 612 792]
+/Contents 4 0 R
+/Resources <<
+/Font <<
+/F1 <<
+/Type /Font
+/Subtype /Type1
+/BaseFont /Helvetica
+>>
+>>
+>>
+>>
+endobj
+4 0 obj
+<<
+/Length 200
+>>
+stream
+BT
+/F1 24 Tf
+100 700 Td
+(AemulusConnect User Guide) Tj
+0 -40 Td
+/F1 12 Tf
+(Please visit https://github.com/Aemulus-XR/AemulusConnect) Tj
+0 -20 Td
+(for the latest documentation.) Tj
+ET
+endstream
+endobj
+xref
+0 5
+0000000000 65535 f
+0000000009 00000 n
+0000000058 00000 n
+0000000115 00000 n
+0000000331 00000 n
+trailer
+<<
+/Size 5
+/Root 1 0 R
+>>
+startxref
+580
+%%EOF
+"@
+                    try {
+                        [System.IO.File]::WriteAllText($UserGuidePdf, $placeholderContent)
+                        Write-Success "Placeholder PDF created: $UserGuidePdf"
+                    }
+                    catch {
+                        Write-Error "Failed to create placeholder PDF: $_"
+                    }
                 }
             }
         }
@@ -264,6 +352,81 @@ if (-not $SkipPdf) {
             Write-Warning "Pandoc not found - cannot generate PDF"
             Write-Info "Install pandoc from https://pandoc.org/ to enable PDF generation"
             Write-Info "Or use: .\convert_docs.ps1 -SkipPdf to skip PDF generation"
+            Write-Info "Creating placeholder PDF for installer compatibility..."
+
+            # Create a minimal PDF placeholder
+            $placeholderContent = @"
+%PDF-1.4
+1 0 obj
+<<
+/Type /Catalog
+/Pages 2 0 R
+>>
+endobj
+2 0 obj
+<<
+/Type /Pages
+/Count 1
+/Kids [3 0 R]
+>>
+endobj
+3 0 obj
+<<
+/Type /Page
+/Parent 2 0 R
+/MediaBox [0 0 612 792]
+/Contents 4 0 R
+/Resources <<
+/Font <<
+/F1 <<
+/Type /Font
+/Subtype /Type1
+/BaseFont /Helvetica
+>>
+>>
+>>
+>>
+endobj
+4 0 obj
+<<
+/Length 200
+>>
+stream
+BT
+/F1 24 Tf
+100 700 Td
+(AemulusConnect User Guide) Tj
+0 -40 Td
+/F1 12 Tf
+(Please visit https://github.com/Aemulus-XR/AemulusConnect) Tj
+0 -20 Td
+(for the latest documentation.) Tj
+ET
+endstream
+endobj
+xref
+0 5
+0000000000 65535 f
+0000000009 00000 n
+0000000058 00000 n
+0000000115 00000 n
+0000000331 00000 n
+trailer
+<<
+/Size 5
+/Root 1 0 R
+>>
+startxref
+580
+%%EOF
+"@
+            try {
+                [System.IO.File]::WriteAllText($UserGuidePdf, $placeholderContent)
+                Write-Success "Placeholder PDF created: $UserGuidePdf"
+            }
+            catch {
+                Write-Error "Failed to create placeholder PDF: $_"
+            }
         }
     }
 }

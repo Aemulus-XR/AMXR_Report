@@ -5,9 +5,7 @@
 
 .DESCRIPTION
     Runs dotnet restore to download all required NuGet packages.
-
-.PARAMETER Verbose
-    Enable verbose output from dotnet restore
+    Use -Verbose for detailed output (provided by [CmdletBinding()]).
 
 .EXAMPLE
     .\restore-packages.ps1
@@ -17,9 +15,7 @@
 #>
 
 [CmdletBinding()]
-param(
-    [switch]$Verbose
-)
+param()
 
 # Import helpers
 . (Join-Path $PSScriptRoot "helpers.ps1")
@@ -32,7 +28,7 @@ try {
         $ProjectFile
     )
 
-    if (-not $Verbose) {
+    if (-not ($PSCmdlet.MyInvocation.BoundParameters['Verbose'])) {
         $restoreArgs += "--verbosity", "minimal"
     }
 
