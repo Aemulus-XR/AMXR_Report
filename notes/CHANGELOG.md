@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.5.2](https://github.com/Aemulus-XR/AemulusConnect/compare/v2.5.1...v2.5.2) (2025-11-21)
+
+
+### Bug Fixes
+
+* add al-mohanad font as the font for arabic languages and swap th… ([36f15a3](https://github.com/Aemulus-XR/AemulusConnect/commit/36f15a3bf053638f0ad74a0816ed9cc70f9ed0b2))
+
 ## [2.5.1](https://github.com/Aemulus-XR/AemulusConnect/compare/v2.5.0...v2.5.1) (2025-11-13)
 
 
