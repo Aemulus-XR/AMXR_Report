@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.6.1](https://github.com/Aemulus-XR/AemulusConnect/compare/v2.6.0...v2.6.1) (2025-11-21)
+
+
+### Bug Fixes
+
+* add support for *.axrjson files ([d70416d](https://github.com/Aemulus-XR/AemulusConnect/commit/d70416de4c22f8a7d9ffc6049f6d75bf7b1defd2))
+
 ## [2.6.0](https://github.com/Aemulus-XR/AemulusConnect/compare/v2.5.2...v2.6.0) (2025-11-21)
 
 
