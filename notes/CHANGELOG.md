@@ -1,5 +1,18 @@
 # Changelog
 
+## [2.6.0](https://github.com/Aemulus-XR/AemulusConnect/compare/v2.5.2...v2.6.0) (2025-11-21)
+
+
+### Features
+
+* add support for configurable file extensions via settings.ini ([55609c4](https://github.com/Aemulus-XR/AemulusConnect/commit/55609c4233801dba146b21a2faf5cfe97d76612c))
+* add utility scripts for working with json/csv files - optional install ([eff55a8](https://github.com/Aemulus-XR/AemulusConnect/commit/eff55a845dea0b908cb9de0b16f8857837d107e5))
+
+
+### Bug Fixes
+
+* Remove debug pirate language logging w/ a #undef ([568385b](https://github.com/Aemulus-XR/AemulusConnect/commit/568385be24ee492144afaf37d3129626425f1f90))
+
 ## [2.5.2](https://github.com/Aemulus-XR/AemulusConnect/compare/v2.5.1...v2.5.2) (2025-11-21)
 
 
