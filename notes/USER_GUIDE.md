@@ -262,7 +262,7 @@ Check your installed version:
 - **Start Menu** → **AemulusConnect** → **About**
 - Or check the title bar of the application window
 
-Current version documentation: **2.5.0**
+Current version documentation: **2.5.2**
 
 ---
 
