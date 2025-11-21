@@ -35,7 +35,7 @@ namespace AemulusConnect.Helpers
         /// Comma-separated list of file extensions to look for, download, and archive. Defaults to ".pdf,.csv".
         /// Extensions should include the dot (e.g., ".pdf,.csv,.txt").
         /// </summary>
-        public static string FileExtensions { get; set; } = ".pdf,.csv";
+        public static string FileExtensions { get; set; } = ".pdf,.csv,.axrjson";
 
         /// <summary>
         /// Gets the configured file extensions as a list of strings.
