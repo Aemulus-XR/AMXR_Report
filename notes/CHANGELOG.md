@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.5.1](https://github.com/Aemulus-XR/AemulusConnect/compare/v2.5.0...v2.5.1) (2025-11-13)
+
+
+### Bug Fixes
+
+* remove the version number overlay - it's in the titlebar ([e54936e](https://github.com/Aemulus-XR/AemulusConnect/commit/e54936e64a5d5bd7d828358e13175076839cc876))
+
 ## [2.5.0](https://github.com/Aemulus-XR/AemulusConnect/compare/v2.4.4...v2.5.0) (2025-11-13)
 
 
